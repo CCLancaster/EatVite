@@ -108,11 +108,13 @@ input[type=submit]:hover {
   border: 1px solid black;
   height: 600px;
   width: 28%;
+  border-radius: 4px;
 }
 .events {
   border: 1px solid black;
   height: 600px;
   width: 67%;
+  border-radius: 4px;
 }
 .cb-slideshow,
 .cb-slideshow:after { 
