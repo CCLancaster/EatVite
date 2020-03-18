@@ -32,7 +32,7 @@ function Background(props) {
             <span>Image 04</span>
             <div>
                 <h3>
-                    FASTER
+                    EAT
                 </h3>
             </div>
         </li>
@@ -40,7 +40,7 @@ function Background(props) {
             <span>Image 05</span>
             <div>
                 <h3>
-                    ENDULGE
+                    ENJOY
                 </h3>
             </div>
         </li>
