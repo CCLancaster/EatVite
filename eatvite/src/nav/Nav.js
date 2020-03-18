@@ -39,7 +39,7 @@ const Nav = props => {
   return (
     <div className="navbar">
         <div className="logobox">
-            <img src="/../public/eatvitelogo.png" className="logo" />
+            <img src="./eatvitelogo.png" className="logo" />
         </div>
         <div className="links">
             <ul>
