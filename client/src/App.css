@@ -38,6 +38,26 @@ a:hover {
   text-align: center;
   border-radius: 4px;
 }
+footer {
+  margin-top: 70px;
+  font-size: 11px;
+  color: black;
+}
+.logform {
+  background-color: white;
+  color:black;
+  height: 440px;
+  width: 400px;   
+  margin: auto;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-top: 60px;
+}
+.logo {
+  height: 80px;
+}
 button {
   font-size: 16px;
   padding: 5px;
@@ -57,7 +77,6 @@ input[type=text], select {
 .logo {
   height: 80px;
 }
-
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
@@ -72,7 +91,6 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
 .bigDaddyContainer {
   display: flex;
   flex-direction: column;
@@ -83,6 +101,22 @@ input[type=submit]:hover {
 }
 .footer {
   margin-top: auto; 
+}
+.profile {
+  display: flex;
+  justify-content: space-around;
+}
+.friendlist {
+  border: 1px solid black;
+  height: 600px;
+  width: 28%;
+  border-radius: 4px;
+}
+.events {
+  border: 1px solid black;
+  height: 600px;
+  width: 67%;
+  border-radius: 4px;
 }
 .cb-slideshow,
 .cb-slideshow:after { 

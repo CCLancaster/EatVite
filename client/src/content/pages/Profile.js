@@ -3,9 +3,31 @@ import React from 'react';
 function Profile(props) {
     return (
         <div className="profile">
-            <h1>please work!</h1>
-        </div>
+            <div className='friendlist'>
+                <div>
+                    
+                </div>
+                <div>
 
+                </div>
+                <div>
+
+                </div>
+
+
+            </div>
+            <div className='events'>
+                <div>
+                    
+                </div>
+                <div>
+    
+                </div>
+                <div>
+    
+                </div>
+            </div>
+        </div>
     )
 }
 
