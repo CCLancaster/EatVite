@@ -2,6 +2,7 @@
   text-align: center;
   color: black;
 }
+
 li {
   list-style: none;
   display: inline;
@@ -12,9 +13,19 @@ a {
   text-decoration: none;
   color: black;
 }
+
 a:hover {
   color: red;
 }
+
+.bigDaddyContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-content: space-between;
+}
+
 .links {
   font-size: 16px;
   height: 50px;
@@ -26,6 +37,14 @@ a:hover {
   padding: 0px 20px 0px 15px;
   z-index: 50;
 }
+
+footer {
+  margin-top: 70px;
+  font-size: 11px;
+  color: black;
+}
+/*---------------------------Signup/Login Forms----------------------------*/
+
 .signForm {
   z-index: 1000;
   background-color: white;
@@ -38,11 +57,7 @@ a:hover {
   text-align: center;
   border-radius: 4px;
 }
-footer {
-  margin-top: 70px;
-  font-size: 11px;
-  color: black;
-}
+
 .logform {
   background-color: white;
   color:black;
@@ -55,14 +70,7 @@ footer {
   border-radius: 4px;
   padding-top: 60px;
 }
-.logo {
-  height: 80px;
-}
-button {
-  font-size: 16px;
-  padding: 5px;
-  margin: 5px 0px;
-}
+
 input[type=text], select {
   width: 90%;
   padding: 12px 20px;
@@ -74,9 +82,11 @@ input[type=text], select {
   background-color: #f3f3f3;
   font-size: 16px;
 }
+
 .logo {
   height: 80px;
 }
+
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
@@ -91,42 +101,138 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-.bigDaddyContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  /* border: 1px solid black; */
-  align-content: space-between;
+
+button {
+  font-size: 16px;
+  padding: 5px;
+  margin: 5px 0px;
 }
-.footer {
-  margin-top: auto; 
-}
+
+/*----------------------------------Profile-------------------------*/
+
 .profile {
   display: flex;
   justify-content: space-around;
 }
+
+.headtitle {
+  background: #f3f3f3;
+  width: 100%;
+}
+/*------------------------------Friends List-------------------------*/
+
 .friendlist {
   border: 1px solid black;
   height: 600px;
   width: 28%;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+/*--------------------------Events----------------------------------*/
+
 .events {
   border: 1px solid black;
   height: 600px;
   width: 67%;
   border-radius: 4px;
+} 
+/*---------------------------------Pop-Up Form------------------------*/
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
 }
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color:black;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #f3f3f3;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: red;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+/*------------------------Slideshow Background-----------------------*/
 .cb-slideshow,
 .cb-slideshow:after { 
-    /* position: fixed; */
     width: 100%;
     height: 100%;
     top: 0px;
     left: 0px;
     z-index: 0; 
 }
+
 .cb-slideshow li span { 
   width: 100%;
   height: 85%;
@@ -141,6 +247,7 @@ input[type=submit]:hover {
   z-index: 0;
   animation: imageAnimation 36s linear infinite 0s; 
 }
+
 .cb-slideshow li div { 
   z-index: 20;
   position: absolute;
@@ -152,6 +259,7 @@ input[type=submit]:hover {
   color: #fff;
   animation: titleAnimation 36s linear infinite 0s; 
 }
+
 .cb-slideshow li div h3 { 
   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
   font-size: 10em;
@@ -159,25 +267,31 @@ input[type=submit]:hover {
   padding: 0;
   /* line-height: 200px;  */
 }
+
 .cb-slideshow li:nth-child(1) span { 
   background-image: url('https://www.ezcater.com/wp-content/uploads/2018/04/shutterstock_629965877.jpg') 
 }
+
 .cb-slideshow li:nth-child(2) span { 
   background-image: url('https://bamboosushi.com/wp-content/uploads/2019/12/Our-Menu_Restaurant-of-Change_Bamboo-Sushi-1900x840.png');
   animation-delay: 6s; 
 }
+
 .cb-slideshow li:nth-child(3) span { 
   background-image: url('https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/carne-asada-tacos-2.jpg');
   animation-delay: 12s; 
 }
+
 .cb-slideshow li:nth-child(4) span { 
   background-image: url('https://culturecrusaders.com/wp-content/uploads/2020/01/ZjK6w7d3Soa4y9kLqsOr_DIN_TAI_FUNG_STYLE_XIAO_LONG_BAO_SOUP_DUMPLINGS_025.jpg');
   animation-delay: 18s; 
 }
+
 .cb-slideshow li:nth-child(5) span { 
   background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190305-lemon-garlic-asparagus-pasta-horizontal-161-1553190755.jpg');
   animation-delay: 24s; 
 }
+
 .cb-slideshow li:nth-child(6) span { 
   background-image: url('https://acadianatable.com/wp-content/uploads/2018/10/Charcuterie-Board-horizlores.jpg');
   animation-delay: 30s; 
@@ -186,18 +300,23 @@ input[type=submit]:hover {
 .cb-slideshow li:nth-child(2) div { 
   animation-delay: 6s; 
 }
+
 .cb-slideshow li:nth-child(3) div { 
   animation-delay: 12s; 
 }
+
 .cb-slideshow li:nth-child(4) div { 
   animation-delay: 18s; 
 }
+
 .cb-slideshow li:nth-child(5) div { 
   animation-delay: 24s; 
 }
+
 .cb-slideshow li:nth-child(6) div { 
   animation-delay: 30s; 
 }
+
 @keyframes imageAnimation { 
   0% { opacity: 0; animation-timing-function: ease-in; }
   8% { opacity: 1; animation-timing-function: ease-out; }
@@ -206,6 +325,7 @@ input[type=submit]:hover {
   100%
    { opacity: 0 }
 }
+
 @keyframes titleAnimation { 
   0% { opacity: 0 }
   8% { opacity: 1 }
@@ -213,12 +333,15 @@ input[type=submit]:hover {
   19% { opacity: 0 }
   100% { opacity: 0 }
 }
+
 .no-cssanimations .cb-slideshow li span{
 	opacity: 1;
 }
+
 @media screen and (max-width: 1140px) { 
   .cb-slideshow li div h3 { font-size: 140px }
 }
+
 @media screen and (max-width: 600px) { 
   .cb-slideshow li div h3 { font-size: 80px }
 }
