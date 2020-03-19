@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 function Profile(props) {
     return (
@@ -9,8 +10,8 @@ function Profile(props) {
                 </div>
 
                 <div className='popupcontainer'>
-                    <div className="box">
-	                    <a className="button" href="#popup1">Add A Friend</a>
+                    <div>
+	                    <button className='profilebtns'><a href="#popup1">Add A Friend</a></button>
                     </div>
 
                     <div id="popup1" className="overlay">
@@ -38,7 +39,7 @@ function Profile(props) {
     
                 </div>
                 <div>
-    
+                    <button className='profilebtns'><Link to='/Addevent'>Add An Event</Link></button>
                 </div>
             </div>
         </div>

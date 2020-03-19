@@ -56,6 +56,7 @@ footer {
   margin-right: 5%;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .logform {
@@ -69,6 +70,7 @@ footer {
   border: 1px solid black;
   border-radius: 4px;
   padding-top: 60px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 input[type=text], select {
@@ -106,6 +108,7 @@ button {
   font-size: 16px;
   padding: 5px;
   margin: 5px 0px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*----------------------------------Profile-------------------------*/
@@ -113,58 +116,47 @@ button {
 .profile {
   display: flex;
   justify-content: space-around;
+  height: 1000px;
+
 }
 
 .headtitle {
   background: #f3f3f3;
+  width: 99.5%;
+  border: 1px transparent solid;
+}
+
+.profilebtns {
   width: 100%;
+  padding: 10px;
+  margin: 0;
 }
 /*------------------------------Friends List-------------------------*/
 
 .friendlist {
   border: 1px solid black;
-  height: 600px;
+  height: 85%;
   width: 28%;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*--------------------------Events----------------------------------*/
 
 .events {
   border: 1px solid black;
-  height: 600px;
+  height: 85%;
   width: 67%;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 /*---------------------------------Pop-Up Form------------------------*/
-
-.box {
-  width: 40%;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.2);
-  padding: 35px;
-  border: 2px solid #fff;
-  border-radius: 20px/50px;
-  background-clip: padding-box;
-  text-align: center;
-}
-
-.button {
-  font-size: 1em;
-  padding: 10px;
-  color:black;
-  border: 1px solid black;
-  border-radius: 4px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-.button:hover {
-  background: #f3f3f3;
-}
 
 .overlay {
   position: fixed;
@@ -183,7 +175,7 @@ button {
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 150px auto;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
