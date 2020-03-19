@@ -3,7 +3,8 @@ import React from 'react';
 function Addevent(props) {
     return (
         <div className="addevent">
-            <h1>addding event</h1>
+            <h1>Adding an event</h1>
+            jbfkhvkjsvdfdnkvjbvfdjnbfj
         </div>
 
     )
