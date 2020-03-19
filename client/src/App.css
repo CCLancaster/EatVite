@@ -116,13 +116,17 @@ button {
 .profile {
   display: flex;
   justify-content: space-around;
-  height: 1000px;
-
+  height: 750px;
 }
 
-.headtitle {
+.friendtitle {
   background: #f3f3f3;
   width: 99.5%;
+  border: 1px transparent solid;
+}
+.eventtitle {
+  background: #f3f3f3;
+  width: 99.8%;
   border: 1px transparent solid;
 }
 
@@ -130,6 +134,14 @@ button {
   width: 100%;
   padding: 10px;
   margin: 0;
+}
+
+.profilecontent {
+  color: red;
+  border: 1px solid black;
+  width: 80%;
+  height: 80%;
+  align-self: center;
 }
 /*------------------------------Friends List-------------------------*/
 
@@ -215,6 +227,13 @@ button {
     width: 70%;
   }
 }
+
+/*--------------------------Add Event Page---------------------------*/
+
+.addevent {
+  border: 1px solid black;
+}
+
 /*------------------------Slideshow Background-----------------------*/
 .cb-slideshow,
 .cb-slideshow:after { 

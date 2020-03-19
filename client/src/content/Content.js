@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Addevent from './pages/Addevent'
 
 
 const Content = props => {
@@ -16,7 +17,7 @@ const Content = props => {
       <Route path="/profile" render={
         () => <Profile user={props.user} />
       } />
-     
+     <Route path="/addevent" render={ () => <Addevent /> }/>
     </div>
   )
 }
