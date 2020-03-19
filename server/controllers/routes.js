@@ -77,8 +77,21 @@ router.get('/chooser', function(req, res) {
 })
 
 router.post('/chooser', function(req, res) {
+  db.Restaurant.create({
+    userId: 1,
+  name: req.body.name,
+  rating: String,
+  style: String,
+  address: String,
+  price: String,
+  url: String,
+  phone: String
+  })
+})
+
+router.post('/chooser', function(req, res) {
     db.User.findOne(req.user.id)
-  .then(user => {
+    .then(user => {
       user.restaurant.push({
         name: 'restaurant',
         rating: '4.5',
@@ -92,8 +105,6 @@ router.post('/chooser', function(req, res) {
         res.send({ restaurant: user.restaurant})
       })
   })
-
-    res.send('chose restauants')
 })
 
 module.exports = router;

@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
 })
 
 // POST to /auth/signup (create user; generate token)
-router.post('/signup', (req, res) => {
+router.post('/', (req, res) => {
   console.log(req.body)
   // Look up the user (make sure they aren't a duplicate)
   db.User.findOne({ email: req.body.email })
