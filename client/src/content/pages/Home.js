@@ -7,9 +7,6 @@ const Home = props => {
     <div className="bigDaddyContainer">
       <Background />
       <Signup />
-      <footer>
-      Made with ❤ Connie Lancaster | Danny Goodrich | Thinh Hoang 2020
-      </footer>
     </div>
   )
 }
