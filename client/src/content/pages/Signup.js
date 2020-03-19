@@ -17,14 +17,14 @@ function Signup(props) {
     const handleSubmit = e => {
         e.preventDefault()
         // TODO: Send the user sign up data to the server
-        fetch(`${process.env.REACT_APP_SERVER_URL}/auth`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, {
         method: 'POST',
         body: JSON.stringify({
             firstname,
             lastname,
             email,
             password,
-            phone
+            phoneNumber: phone
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -56,8 +56,8 @@ function Signup(props) {
             <form className="signup" method="POST" onSubmit={handleSubmit}>
                 
                 
-                <input type="text" name="firstName" placeholder="First Name" onChange={e => setFirstname(e.target.value)} />
-                <input type="text" name="lastName" placeholder="Last Name" onChange={e => setLastname(e.target.value)} />
+                <input type="text" name="firstname" placeholder="First Name" onChange={e => setFirstname(e.target.value)} />
+                <input type="text" name="lastname" placeholder="Last Name" onChange={e => setLastname(e.target.value)} />
                 <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
                 <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                 <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={e => setPhone(e.target.value)} />

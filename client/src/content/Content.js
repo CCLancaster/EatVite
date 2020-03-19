@@ -10,7 +10,9 @@ import Addevent from './pages/Addevent'
 const Content = props => {
   return (
     <div className="container">
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" render={
+        () => <Home user={props.user} updateUser={props.updateUser} />
+      } />
       <Route path="/login" render={
         () => <Login user={props.user} updateUser={props.updateUser} />
       } />
