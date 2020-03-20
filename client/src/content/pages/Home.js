@@ -6,7 +6,7 @@ const Home = props => {
   return (
     <div className="bigDaddyContainer">
       <Background />
-      <Signup />
+      <Signup user={props.user} updateUser={props.updateUser}/>
     </div>
   )
 }
