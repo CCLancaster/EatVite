@@ -38,11 +38,16 @@ a:hover {
   z-index: 50;
 }
 
-footer {
-  margin-top: 70px;
-  font-size: 11px;
-  color: black;
+.inline {
+  border: 1px solid black;
+  width: 80%;
+  display: flex;
+  margin: auto;
+  padding: 0px;
+  justify-content: space-around;
+
 }
+
 /*---------------------------Signup/Login Forms----------------------------*/
 
 .signForm {
@@ -141,7 +146,7 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/*--------------------------Events----------------------------------*/
+/*--------------------------Events(not the js)----------------------------------*/
 
 .events {
   border: 1px solid black;
@@ -246,6 +251,7 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   padding-bottom: 40px;
   border-radius: 4px;
+  margin-bottom: 50px;
 }
 
 .headtitle {
@@ -267,13 +273,29 @@ button {
 }
 
 .apibox{
-  width: 60%;
-  height: 300px;
+  width: 80%;
+  height: 450px;
   margin: 30px auto;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   overflow: auto;
 }
 
+/*------------------------------Event.js ----------------------------*/
+
+.invitation {
+  border: 1px solid black;
+  width: 80%;
+  border-radius: 4px;
+  margin: 30px auto;
+}
+
+.resoptions {
+  border: 1px solid black;  
+  border: 1px solid black;
+  width: 80%;
+  border-radius: 4px;
+  margin: 30px auto;
+}
 /*------------------------Slideshow Background-----------------------*/
 .cb-slideshow,
 .cb-slideshow:after { 
@@ -316,7 +338,7 @@ button {
   font-size: 10em;
   text-align: left;
   padding: 0;
-  /* line-height: 200px;  */
+
 }
 
 .cb-slideshow li:nth-child(1) span { 
