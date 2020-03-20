@@ -75,12 +75,14 @@ router.post('/signup', (req, res) => {
 // NOTE: User should be logged in to access this route
 router.get('/profile', (req, res) => {
   // The user is logged in, so req.user should have data!
-  // TODO: Anything you want here!
-
-  // NOTE: This is the user data from the time the token was issued
-  // WARNING: If you update the user info those changes will not be reflected here
-  // To avoid this, reissue a token when you update user data
+  if (req.user) {
+    // needs another line of code to "send"/show the profile page
   res.send({ message: 'Secret message for logged in people ONLY!' })
+
+} else {
+  res.status(400).send({ message: 'Please log in to see this page' })
+  // just need to make sure that the page doesn't load
+}
 })
 
 module.exports = router
