@@ -15,9 +15,20 @@ var db = require('../models');
 
 
 
-// router.get('/profile', function(req, res) {
-//     res.send('profile')
-// })
+router.get('/profile', function(req, res) {
+  let user = db.User.findById(req.params.id)
+  let friends = []
+  // {friends: [1,2,3]}
+  user.friends.forEach((friendId) => {
+    friends.push(db.User.findById(friendId))
+  })
+  let events = []
+  // {events: [1,2,3]}
+  user.events.forEach((eventId) => {
+    events.push(db.User.findById(eventId))
+  })
+  res.send(({ friends: friends, events: events }))
+})
 
 
 // router.get('/addevent', function(req, res) {
@@ -40,9 +51,9 @@ router.post('/addfriend', function(req, res) {
     db.User.findOne(req.user.id)
   .then(user => {
     user.friends.push({
-        name: 'Fanny',
-        email: 'email@email.com',
-        phone: '1231231234'
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
     })
     user.save().then(() => {
         res.send({ friends: user.friends})
