@@ -44,16 +44,16 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div className="logform">
             <h2>Login</h2>
-            <form className="lgoin" method="POST" onSubmit={handleSubmit}>
+            <form className="login" method="POST" onSubmit={handleSubmit}>
                 <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
                 <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                
                 <button type="submit">Submit</button>
             </form>
-            New user?
-            <a href=''>Sign up here</a>
+            <p>New user?
+            <a href=''>Sign up here</a></p>
         </div>
     )
 }
