@@ -1,10 +1,11 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
+import React from 'react';
+import { Route } from 'react-router-dom';
 
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Profile from './pages/Profile'
-import Addevent from './pages/Addevent'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Addevent from './pages/Addevent';
+import Event from './pages/Event';
 
 
 const Content = props => {
@@ -20,6 +21,7 @@ const Content = props => {
         () => <Profile user={props.user} />
       } />
      <Route path="/addevent" render={ () => <Addevent /> }/>
+     <Route path="/event" render={ () => <Event /> }/>
     </div>
   )
 }
