@@ -8,6 +8,10 @@ const restaurantSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
   },
+  eventId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Event'
+  },
   name: String,
   rating: String,
   style: String,

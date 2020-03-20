@@ -29,7 +29,7 @@ app.use('/auth', expressJwt({
   ]
 }), require('./controllers/auth'))
 
-app.use('/hey', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/routes.js'))
+// app.use('/hey', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/routes.js'))
 // app.use('/hey', require('./controllers/routes.js'))
 
 // app.get('*', (req, res) => {
