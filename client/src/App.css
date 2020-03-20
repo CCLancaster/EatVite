@@ -231,9 +231,67 @@ button {
 /*--------------------------Add Event Page---------------------------*/
 
 .addevent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add {
   border: 1px solid black;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 0px 10px 40px 10px;
 }
 
+.search {
+  border: 1px solid black;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 0px 10px 40px 10px;
+}
+
+.choose {
+  border: 1px solid black;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 0px 10px 40px 10px;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  margin: 5px;
+  background-color: #f3f3f3;
+}
+
+.eatform{
+  /* height: 440px; */
+  width: 600px;   
+  margin: auto;
+  text-align: center;
+}
+
+.searchform {
+  display: flex;
+}
+
+.searchbtn {
+  /* height: 20px; */
+}
+
+.apibox{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 /*------------------------Slideshow Background-----------------------*/
 .cb-slideshow,
 .cb-slideshow:after { 
