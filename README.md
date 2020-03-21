@@ -4,16 +4,16 @@ would like to cordially (and from at least 6 feet away) invite you to EatVite, a
 
 ## Our Site
 screen shots of our site
-<img src='./homepage.png'>
+<img src='client/public/homepage.png'>
 
 ## Technologies
--MongoDB 
--Mongoose
--Express
--React
--Axios
--JWT
--
+- MongoDB 
+- Mongoose
+- Express
+- React
+- React Router Dom
+- Axios
+- JWT
 
 ## Our Approach
 couple paragraphs on how we approached our project
