@@ -45,7 +45,7 @@ function Addevent(props) {
  
          })     
      }
- 
+     // call to API to get our restaurant selections based on the search criteria 
      const handleSearchSubmit = e => {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_SERVER_URL}/auth/chooser`, {
@@ -63,9 +63,57 @@ function Addevent(props) {
                 setMessage(`${response.status}: ${response.statusText}`);
                 return;
             }
-
-
      }
+
+     const handleRestaurantSubmit = e => {
+         e.preventDefault()
+         useEffect(() => {
+            fetch(`${process.env.REACT_APP_SERVER_URL}/auth/chooser`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    img: restaurant.image_url,
+                    name: restaurant.name,
+                    rating: restaurant.rating,
+                    style: restaurant.categories.title,
+                    address: {
+                        street: restaurant.location.address1,
+                        city: restaurant.location.city,
+                        state: restaurant.location.state,
+                        zipcode: restaurant.location.zip_code
+                    },
+                    price: restaurant.price,
+                    url: restaurant.url
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.data.message) {
+                setError(response.data.message)
+                console.log(response.data.err)
+                } else {
+                setRestaurants(response.data)
+                }
+            }).catch(err=>{
+                setError(err.message)
+                console.log(err)
+            });
+            }, [])
+     }
+     let restaurantList = restaurants.length < 1 ? 
+        <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
+        restaurants.map((restaurant, i) => (
+        <div key={`restaruantListItem-${i}`}>
+        <img src={restaurant.img} />
+        <h4><Link to={`${restaurant.url}`}>{restaurant.name}</Link></h4>
+        <h5>{restaurant.rating}, {restaurant.price}</h5>
+        <h5>{restaurant.style}</h5>
+        <h5>{restaurant.address.street}</h5>
+        <h5>{restaurant.address.city}, {restaurant.address.state} {restaurant.address.zipcode}</h5>
+        </div>
+  ))
+
     //  if (props.user) {
     //      return <Redirect to="/profile" />
     //  }
@@ -92,7 +140,10 @@ function Addevent(props) {
             <div className="choose">
                 <h1 className="headtitle">Choose Your Restaurants</h1>
                 <div className="apibox">
-                        RESTAURANTS HERE
+                    <form method="POST" className="restaurantform" onSubmit={handleRestaurantSubmit} >
+                        {restaurantList}
+                        <button type="submit">+</button>
+                    </form>
                 </div>
                 <button type="submit">Send EatVite!</button>
             </div>
