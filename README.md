@@ -32,6 +32,14 @@ Why? Because ain't nobody got time for that.
 <img src="https://media1.giphy.com/media/3ov9jPDMzHPjTklNKw/giphy.gif?cid=dc79c3575a609ef54657734859eaa3f1">
 
 ## Wireframes
+<img src="client/public/one.png">
+<img src="client/public/two.png">
+<img src="client/public/three.png">
+<img src="client/public/four.png">
+<img src="client/public/five.png">
+<img src="client/public/sixe.png">
+<img src="client/public/seven.png">
+<img src="client/public/eight.png">
 
 ## Unsolved Problems && Major Hurdles
 
