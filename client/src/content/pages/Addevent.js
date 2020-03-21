@@ -58,16 +58,17 @@ function Addevent(props) {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_SERVER_URL}/auth/chooser`, {
             method: 'GET',
-            body: JSON.stringify({
-                search
-            }),
+            // body: JSON.stringify({
+            //     search
+            // }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // Authorization: `Bearer ${token}`
             }
         })
         .then(response => {
-            if (response.data.message) {
-            console.log(response.data.err)
+            if (!response) {
+            console.log(`No response: ${response}`)
             } else {
             console.log(response)
             setRestaurants({
