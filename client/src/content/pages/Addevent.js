@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Redirect from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 function Addevent(props) {
      // Declare and initialize state variables
@@ -8,7 +8,20 @@ function Addevent(props) {
      let [time, setTime] = useState('')
      let [friend, setFriend] = useState('')
      let [search, setSearch] = useState('')
-     let [restaurants, setRestaurants] = useState([])
+     let [restaurants, setRestaurants] = useState([{
+        img: '',
+        name: '',
+        rating: '',
+        style: '',
+        address: {
+            street: '',
+            city: '',
+            state: '',
+            zipcode: ''
+        },
+        price: '',
+        url: ''
+     }])
      let [message, setMessage] = useState('')
          
      useEffect(() => {
@@ -38,11 +51,6 @@ function Addevent(props) {
              return;
          }
  
-        //  // if user signed up successfully
-        //  response.json().then(result => {
-        //      props.updateUser(result.token);
-        //  })
- 
          })     
      }
      // call to API to get our restaurant selections based on the search criteria 
@@ -58,49 +66,35 @@ function Addevent(props) {
             }
         })
         .then(response => {
-            if (!response.ok) {
-                console.log(response);
-                setMessage(`${response.status}: ${response.statusText}`);
-                return;
+            if (response.data.message) {
+            console.log(response.data.err)
+            } else {
+            console.log(response)
+            setRestaurants({
+            img: response.restaurant.image_url,
+            name: response.restaurant.name,
+            rating: response.restaurant.rating,
+            style: response.restaurant.categories.title,
+            address: {
+                street: response.restaurant.location.address1,
+                city: response.restaurant.location.city,
+                state: response.restaurant.location.state,
+                zipcode: response.restaurant.location.zip_code
+            },
+            price: response.restaurant.price,
+            url: response.restaurant.url
+            })
             }
+        }).catch(err=>{
+            console.log(err)
+        });
      }
 
+     // select restaurants and push them into the restaurant array in Event schema
      const handleRestaurantSubmit = e => {
          e.preventDefault()
-         useEffect(() => {
-            fetch(`${process.env.REACT_APP_SERVER_URL}/auth/chooser`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    img: restaurant.image_url,
-                    name: restaurant.name,
-                    rating: restaurant.rating,
-                    style: restaurant.categories.title,
-                    address: {
-                        street: restaurant.location.address1,
-                        city: restaurant.location.city,
-                        state: restaurant.location.state,
-                        zipcode: restaurant.location.zip_code
-                    },
-                    price: restaurant.price,
-                    url: restaurant.url
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.data.message) {
-                setError(response.data.message)
-                console.log(response.data.err)
-                } else {
-                setRestaurants(response.data)
-                }
-            }).catch(err=>{
-                setError(err.message)
-                console.log(err)
-            });
-            }, [])
      }
+
      let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
@@ -132,7 +126,7 @@ function Addevent(props) {
             </div>
             <div className="search">
                 <h1 className="headtitle">Where Do You Want To Eat?</h1>
-                <form method="GET" className="searchform">
+                <form method="GET" className="searchform" onSubmit={handleSearchSubmit}>
                     <input type="text" name="search" placeholder="Enter City Name or Zipcode" />
                     <button type="submit">Search</button>
                 </form>
