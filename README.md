@@ -3,8 +3,8 @@ The Quarantined Devs
 would like to cordially (and from at least 6 feet away) invite you to EatVite, an app where indecisive foodie friends can go to help eachother pick a restaurant for their upcoming date.
 
 ## Our Site
-<img src="./homepage.png" alt="homepage"> 
-<img src="./addfriend.png" alt="addfriend">
+<img src="client/public/homepage.png" alt="homepage"> 
+<img src="client/public/addfriend.png" alt="addfriend">
 
 ## Technologies
 - MongoDB 
