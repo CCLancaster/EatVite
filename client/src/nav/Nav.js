@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const Nav = props => {
   const handleLogout = e => {
@@ -13,10 +13,10 @@ const Nav = props => {
   let links = (
     <span>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/auth/login">Login</Link>
       </li>
       <li>
-        <Link to="/signup">Signup</Link>
+        <Link to="/">Signup</Link>
       </li>
     </span>
   )
@@ -29,7 +29,7 @@ const Nav = props => {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/"onClick={handleLogout}>Log Out</Link>
+          <Link to="/" onClick={handleLogout}>Log Out</Link>
         </li>
       </span>
     )

@@ -32,7 +32,7 @@ function Addevent(props) {
      const handleDetailSubmit = e => {
          e.preventDefault()
          // TODO: Send the user event detals to the server
-         fetch(`${process.env.REACT_APP_SERVER_URL}/auth/addevent`, {
+         fetch(`${process.env.REACT_APP_SERVER_URL}/addevent`, {
          method: 'POST',
          body: JSON.stringify({
              title,
@@ -56,7 +56,7 @@ function Addevent(props) {
      // call to API to get our restaurant selections based on the search criteria 
      const handleSearchSubmit = e => {
         e.preventDefault()
-        fetch(`${process.env.REACT_APP_SERVER_URL}/auth/chooser`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/chooser`, {
             method: 'GET',
             // body: JSON.stringify({
             //     search

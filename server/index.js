@@ -20,7 +20,7 @@ app.use(express.json());
 // include my controller
 // app.use('/hey', require('./controllers/routes.js'))
 // app.use('/auth', require('./controllers/auth.js'))
-app.use('/auth', expressJwt({
+app.use('/auth', cors(), expressJwt({
   secret: process.env.JWT_SECRET
 }).unless({ // unless defines exceptions to the rule
   path: [
@@ -28,6 +28,9 @@ app.use('/auth', expressJwt({
     { url: '/auth/signup', methods: ['POST'] }
   ]
 }), require('./controllers/auth'))
+
+// AZ notes - if you run into a problem where you get a cors error add cors() in your controller dec
+// example: app.use('/exampleurl', cors(), expressJwt({ secret: process.env.JWT_SECRET}), whateveryourrequire)
 
 // app.use('/hey', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/routes.js'))
 // app.use('/hey', require('./controllers/routes.js'))

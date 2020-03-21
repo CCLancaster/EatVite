@@ -53,7 +53,7 @@ function Login(props) {
                 <button type="submit">Submit</button>
             </form>
             <p>New user?
-            <a href=''>Sign up here</a></p>
+            <a href='/'>Sign up here</a></p>
         </div>
     )
 }
