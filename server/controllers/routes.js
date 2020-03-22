@@ -43,18 +43,23 @@ router.post('/addevent', function(req, res) {
 })
 
 
-// router.get('/addfriend', function(req, res) {
-//     res.send('addfriend')
-// })
-
 router.post('/addfriend', function(req, res) {
     db.User.findOne(req.user.id)
   .then(user => {
-    user.friends.push({
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone
+    db.User.findOne({email: req.body.email})
+    .then(friend => {
+      console.log(friend)
+      if (!user.friends.includes(friend._id)){
+        user.friends.push(friend._id)
+      }
+      console.log(user)
     })
+    .catch(err => {
+      console.log('failed to find friend', err)
+      res.status(503).send({ message: 'failed to find a friend' })
+    })
+
+   
     user.save().then(() => {
         res.send({ friends: user.friends})
     })

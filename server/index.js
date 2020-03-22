@@ -18,7 +18,7 @@ app.use(express.json());
 // });
 
 // include my controller
-app.use('/eat', require('./controllers/routes.js'))
+// app.use('/eat', require('./controllers/routes.js'))
 
 // app.use('/auth', require('./controllers/auth.js'))
 
@@ -34,7 +34,7 @@ app.use('/auth', cors(), expressJwt({
 // AZ notes - if you run into a problem where you get a cors error add cors() in your controller dec
 // example: app.use('/exampleurl', cors(), expressJwt({ secret: process.env.JWT_SECRET}), whateveryourrequire)
 
-// app.use('/hey', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/routes.js'))
+app.use('/eat', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/routes.js'))
 // app.use('/hey', require('./controllers/routes.js'))
 
 // app.get('*', (req, res) => {
