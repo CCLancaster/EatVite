@@ -8,20 +8,7 @@ function Addevent(props) {
      let [time, setTime] = useState('')
      let [friend, setFriend] = useState('')
      let [search, setSearch] = useState('')
-     let [restaurants, setRestaurants] = useState([{
-        img: '',
-        name: '',
-        rating: '',
-        style: '',
-        address: {
-            street: '',
-            city: '',
-            state: '',
-            zipcode: ''
-        },
-        price: '',
-        url: ''
-     }])
+     let [restaurants, setRestaurants] = useState([])
      let [message, setMessage] = useState('')
          
      useEffect(() => {
@@ -72,7 +59,8 @@ function Addevent(props) {
             return response.json()
             }).then((data) => {
             console.log(data)
-            setRestaurants(data)
+            // map through data.restaurant for the deets
+            setRestaurants(data.restaurant)
             // {
             // img: data.restaurant.image_url,
             // name: data.restaurant.name,
@@ -98,17 +86,22 @@ function Addevent(props) {
          e.preventDefault()
      }
      
+     
      console.log(restaurants);
      let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
-        <img src={restaurant.img} />
-        <h4><Link to={`${restaurant.url}`}>{restaurant.name}</Link></h4>
+        <img src={restaurant.image_url} />
+        <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
         <h5>{restaurant.rating}, {restaurant.price}</h5>
         <h5>{restaurant.style}</h5>
-        <h5>{restaurant.address.street}</h5>
-        <h5>{restaurant.address.city}, {restaurant.address.state} {restaurant.address.zipcode}</h5>
+        {/* iterate over restaurant.location.display_address
+            for EACH item, put it in 'p' tag
+        */}
+        <div>
+        {restaurant.location.display_address.forEach(addressLine => <p>{addressLine}</p>)}
+        </div>
         </div>
   ))
 
