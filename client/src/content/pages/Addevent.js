@@ -41,7 +41,8 @@ function Addevent(props) {
              friend
          }),
          headers: {
-             'Content-Type': 'application/json'
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
          }
          })
          .then(response => {
@@ -63,6 +64,7 @@ function Addevent(props) {
             }),
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
             }
         })
         .then(response => {
