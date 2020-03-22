@@ -94,5 +94,25 @@ router.post('/chooser', function(req, res) {
 })
 })
 
+router.get('/event/:id', function(req, res) {
+  db.Event.findById(req.params.id)
+  .then(event => res.send(event))
+  .catch(err => res.send({ message: 'Error in getting one event', err}));
+})
+
+// TODO:This method needs method-override to work
+router.put('/event/:id', function(req, res) {
+  db.Event.findById(req.params.id)
+  .then( event => {
+    console.log(event)
+    //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
+    event.update({retaurant: {restaurant}})
+  })
+  .then(
+    res.redirect('/profile')
+  )
+
+})
+
 
 module.exports = router;
