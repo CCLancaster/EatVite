@@ -65,7 +65,7 @@ function Signup(props) {
                 <button type="submit">Submit</button>
             </form>
             Already have an account?
-            <a href=''>Log In Here</a>
+            <a href='/auth/login'>Log In Here</a>
         </div>
 
     )

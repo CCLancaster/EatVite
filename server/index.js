@@ -18,8 +18,10 @@ app.use(express.json());
 // });
 
 // include my controller
-// app.use('/hey', require('./controllers/routes.js'))
+app.use('/eat', require('./controllers/routes.js'))
+
 // app.use('/auth', require('./controllers/auth.js'))
+
 app.use('/auth', cors(), expressJwt({
   secret: process.env.JWT_SECRET
 }).unless({ // unless defines exceptions to the rule
