@@ -129,7 +129,7 @@ function Addevent(props) {
             <div className="search">
                 <h1 className="headtitle">Where Do You Want To Eat?</h1>
                 <form method="GET" className="searchform" onSubmit={handleSearchSubmit}>
-                    <input type="text" name="search" id="search" placeholder="Enter City Name or Zipcode" />
+                    <input type="text" name="search" id="search" onChange={e => setSearch(e.target.value)} placeholder="Enter City Name or Zipcode" />
                     <button type="submit">Search</button>
                 </form>
             </div>
