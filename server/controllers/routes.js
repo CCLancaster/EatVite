@@ -1,8 +1,8 @@
-// var express = require('express');
-// var router = express.Router();
-// const axios = require('axios'); 
+var express = require('express');
+var router = express.Router();
+const axios = require('axios'); 
 
-// var db = require('../models');
+var db = require('../models');
 
 router.get('/', function(req, res) {
       res.send('home')
@@ -36,6 +36,8 @@ router.get('/profile', function(req, res) {
 router.post('/addevent', function(req, res) {
     db.Event.create(req.body)
   .then(event => {
+    //this is were we use the friend name we just entered into the event table to find the user id
+    //db.User.findOne()
     res.redirect('chooser')
   }).catch(err=>res.send(err))  
 })
@@ -68,52 +70,24 @@ router.post('/addfriend', function(req, res) {
 })
 
 
-router.get('/chooser', function(req, res) {
-    var yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${req.body}`;
+router.post('/chooser', function(req, res) {
+    var yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${req.body.search}`;
+    console.log(req.body.search);
+    console.log(yelpUrl);
     axios.get(yelpUrl, {headers: {
         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
     }}).then( function(apiResponse) {
         var restaurant = apiResponse.data.businesses;
         
       
-        console.log(apiResponse);
+        console.log(restaurant);
         res.send({ restaurant });
       }).catch(err => {
           console.log(err);
           res.send('error');
-    res.send('chooser page')
+    // res.send(restaurant)
 })
 })
 
-router.post('/chooser', function(req, res) {
-  db.Restaurant.create({
-    userId: 1,
-  name: req.body.name,
-  rating: String,
-  style: String,
-  address: String,
-  price: String,
-  url: String,
-  phone: String
-  })
-})
-
-router.post('/chooser', function(req, res) {
-    db.User.findOne(req.user.id)
-    .then(user => {
-      user.restaurant.push({
-        name: 'restaurant',
-        rating: '4.5',
-        style: 'american',
-        address: '3 lower falls rd',
-        price: '$',
-        url: 'restaurant.com',
-        phone: '2078788674'
-      })
-      user.save().then(() => {
-        res.send({ restaurant: user.restaurant})
-      })
-  })
-})
 
 module.exports = router;

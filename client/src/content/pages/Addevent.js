@@ -32,7 +32,7 @@ function Addevent(props) {
      const handleDetailSubmit = e => {
          e.preventDefault()
          // TODO: Send the user event detals to the server
-         fetch(`${process.env.REACT_APP_SERVER_URL}/addevent`, {
+         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/addevent`, {
          method: 'POST',
          body: JSON.stringify({
              title,
@@ -56,37 +56,37 @@ function Addevent(props) {
      // call to API to get our restaurant selections based on the search criteria 
      const handleSearchSubmit = e => {
         e.preventDefault()
-        fetch(`${process.env.REACT_APP_SERVER_URL}/chooser`, {
-            method: 'GET',
-            // body: JSON.stringify({
-            //     search
-            // }),
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/chooser`, {
+            method: 'POST',
+            body: JSON.stringify({
+                search
+            }),
             headers: {
                 'Content-Type': 'application/json',
-                // Authorization: `Bearer ${token}`
             }
         })
         .then(response => {
-            if (!response) {
-            console.log(`No response: ${response}`)
-            } else {
-            console.log(response)
-            setRestaurants({
-            img: response.restaurant.image_url,
-            name: response.restaurant.name,
-            rating: response.restaurant.rating,
-            style: response.restaurant.categories.title,
-            address: {
-                street: response.restaurant.location.address1,
-                city: response.restaurant.location.city,
-                state: response.restaurant.location.state,
-                zipcode: response.restaurant.location.zip_code
-            },
-            price: response.restaurant.price,
-            url: response.restaurant.url
+            console.log(`${response}`)
+            return response.json()
+            }).then((data) => {
+            console.log(data)
+            setRestaurants(data)
+            // {
+            // img: data.restaurant.image_url,
+            // name: data.restaurant.name,
+            // rating: data.restaurant.rating,
+            // style: data.restaurant.categories.title,
+            // address: {
+            //     street: data.restaurant.location.address1,
+            //     city: data.restaurant.location.city,
+            //     state: data.restaurant.location.state,
+            //     zipcode: data.restaurant.location.zip_code
+            // },
+            // price: data.restaurant.price,
+            // url: data.restaurant.url
+            // })
             })
-            }
-        }).catch(err=>{
+        .catch(err=>{
             console.log(err)
         });
      }
@@ -95,7 +95,8 @@ function Addevent(props) {
      const handleRestaurantSubmit = e => {
          e.preventDefault()
      }
-
+     
+     console.log(restaurants);
      let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
@@ -128,7 +129,7 @@ function Addevent(props) {
             <div className="search">
                 <h1 className="headtitle">Where Do You Want To Eat?</h1>
                 <form method="GET" className="searchform" onSubmit={handleSearchSubmit}>
-                    <input type="text" name="search" placeholder="Enter City Name or Zipcode" />
+                    <input type="text" name="search" id="search" onChange={e => setSearch(e.target.value)} placeholder="Enter City Name or Zipcode" />
                     <button type="submit">Search</button>
                 </form>
             </div>
