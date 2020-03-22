@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState, useReducer } from "react";
 import { BrowserRouter as Router, Link, Route, NavLink, Redirect } from "react-router-dom"
 import Addevent from "./Addevent";
 
 function Profile(props) {
+    let [friendName, setFriendName] = useState('')
+     let [friendEmail, setFriendEmail] = useState('')
+     let [friendPhone, setFriendPhone] = useState('')
+
+     const handleFriendSubmit = e => {
+        e.preventDefault()
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/addfriend`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: friendName,
+                email: friendEmail,
+                phone: friendPhone,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+            console.log(`${response}`)
+            return response.json()
+            }).then((data) => {
+            console.log(data)
+            })
+        .catch(err=>{
+            console.log(err)
+        });
+     }
     return (
         <div className="profile">
             <div className="friendlist">
@@ -16,15 +44,16 @@ function Profile(props) {
                     <div>
 	                    <button className="profilebtns"><a href="#popup1">Add A Friend</a></button>
                     </div>
-
+                    
                     <div id="popup1" className="overlay">
 	                    <div className="popup">
 		                    <h2>Add A Friend</h2>
 		                    <a className="close" href="#">&times;</a>
 		                    <div className="content">
-			                    <form className="friendform" method="POST">
-                                    <input type="text" name="name" placeholder="Name" />
-                                    <input type="text" name="email" placeholder="Email" />
+			                    <form className="friendform" method="POST" onSubmit={handleFriendSubmit}>
+                                    <input type="text" name="name" onChange={e => setFriendName(e.target.value)} placeholder="Name" />
+                                    <input type="text" name="email" onChange={e => setFriendEmail(e.target.value)} placeholder="Email" />
+                                    <input type="text" name="phone" onChange={e => setFriendPhone(e.target.value)} placeholder="Phone Number" />
                                     <button type="submit">Submit</button>
                                 </form>
 		                    </div>
