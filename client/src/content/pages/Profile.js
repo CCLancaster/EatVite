@@ -8,6 +8,7 @@ function Profile(props) {
      let [friendEmail, setFriendEmail] = useState('')
      let [friendPhone, setFriendPhone] = useState('')
      let [friendList, setFriendList] = useState([])
+     let [eventList, setEventList] = useState([])
      let [error, setError] = useState(null)
 
      useEffect(() => {
@@ -24,6 +25,7 @@ function Profile(props) {
             console.log(response.data.err)
           } else {
             setFriendList(response.data)
+            setEventList(response.data)
             console.log(response.data)
           }
         }).catch(err=>{
@@ -70,6 +72,17 @@ function Profile(props) {
         </div>)
     })
 
+    let myEventsList = props.user.events.length < 1 ?
+    <h3>you have no events!</h3> :
+    props.user.events.map((event, i) => {
+        console.log(event)
+
+        return (<div key={`eventListitem-${i}`}>
+             <h5>{event.title}</h5>
+        </div>)
+    })
+            
+
     return (
         <div className="profile">
             <div className="friendlist">
@@ -101,14 +114,14 @@ function Profile(props) {
                 </div>
                 </div>
 
-
-            </div>
+            </div>   
             <div className="events">
                 <div>
                     <h1 className="headtitle">Events</h1>
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
+                    {myEventsList}
                 </div>
                 <div>
 
