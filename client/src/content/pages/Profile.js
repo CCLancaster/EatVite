@@ -1,11 +1,36 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route, NavLink, Redirect } from "react-router-dom"
 import Addevent from "./Addevent";
+import axios from 'axios';
 
 function Profile(props) {
     let [friendName, setFriendName] = useState('')
      let [friendEmail, setFriendEmail] = useState('')
      let [friendPhone, setFriendPhone] = useState('')
+     let [friendList, setFriendList] = useState([])
+     let [error, setError] = useState(null)
+
+     useEffect(() => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
+            methos: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+          if (response.data.message) {
+            setError(response.data.message)
+            console.log(response.data.err)
+          } else {
+            setFriendList(response.data)
+          }
+        }).catch(err=>{
+          setError(err.message)
+          console.log(err)
+        });
+    }, [])
+     
 
      const handleFriendSubmit = e => {
         e.preventDefault()
