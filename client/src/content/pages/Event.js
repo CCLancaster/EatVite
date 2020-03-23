@@ -28,9 +28,24 @@ function Event(props) {
         console.log(err)
     });
 
-    const handleRestaurantSubmit = e => {
+    const handleRestaurantSubmit = (e, restaurant => {
         e.preventDefault()
-    }
+        setRestaurants([restaurant])
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/:id`, {
+            method: 'PUT',
+            body:JSON.stringify({restaurants}),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.log(response);
+                return;
+            }
+        })
+    })
 
     let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show!</h3> : 
@@ -64,7 +79,7 @@ function Event(props) {
                 <h3>Invitees: </h3>{event.friends.map(name => <p> {name} </p>)}
             </div>
     
-            <form method="POST" className="restaurantform" onSubmit={handleRestaurantSubmit}>
+            <form method="POST" className="restaurantform" onSubmit={(e) => {handleRestaurantSubmit(e, restaurant);}}>
                 <div className="resoptions">
                     <h1 className="headtitle">Pick ONE restaurant from the list below!</h1>
                         <div>List of chosen restaurants:

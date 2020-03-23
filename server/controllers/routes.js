@@ -119,8 +119,10 @@ router.get('/event/:id', function(req, res) {
 
 // TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
 router.put('/event/:id', function(req, res) {
-  db.Event.findById(req.params.id)
-  .then( event => {
+  
+  let restaurant = req.body.restaurant
+  let event = db.Event.findById(req.params.id)
+  .then(restaurant => {
     console.log(event)
     //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
     event.update({retaurant: {restaurant}})
