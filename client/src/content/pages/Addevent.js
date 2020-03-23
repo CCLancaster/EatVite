@@ -92,14 +92,6 @@ function Addevent(props) {
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
-<<<<<<< HEAD
-            <img src={restaurant.img} />
-            <h4><Link to={`${restaurant.url}`}>{restaurant.name}</Link></h4>
-            <h5>{restaurant.rating}, {restaurant.price}</h5>
-            <h5>{restaurant.style}</h5>
-            <h5>{restaurant.address.street}</h5>
-            <h5>{restaurant.address.city}, {restaurant.address.state} {restaurant.address.zipcode}</h5>
-=======
         <img src={restaurant.image_url} />
         <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
         <h5>{restaurant.rating}, {restaurant.price}</h5>
@@ -110,7 +102,6 @@ function Addevent(props) {
         <div>
         {restaurant.location.display_address.forEach(addressLine => <p>{addressLine}</p>)}
         </div>
->>>>>>> fc9d091422efb268d2409cd374b4279b7c243364
         </div>
   ))
 
