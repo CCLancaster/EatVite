@@ -117,7 +117,7 @@ router.get('/event/:id', function(req, res) {
   .catch(err => res.send({ message: 'Error in getting one event', err}));
 })
 
-// TODO:This method needs method-override to work
+// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
 router.put('/event/:id', function(req, res) {
   db.Event.findById(req.params.id)
   .then( event => {

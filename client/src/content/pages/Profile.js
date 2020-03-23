@@ -12,7 +12,7 @@ function Profile(props) {
 
      useEffect(() => {
         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
-            methos: 'GET',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
