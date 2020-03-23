@@ -7,19 +7,32 @@ var db = require('../models');
 
 
 router.get('/profile', function(req, res) {
-  let user = db.User.findById(req.params.id)
-  let friends = []
+  db.User.findById(req.user._id)
+  .then(user => {
+    // console.log(user.friends)
+    // console.log(user.events)
+    db.User.findOne({_id: user.friends[0]})
+    .then(names => {
+      res.send(names.firstname)
+      console.log(`Your fluffing friends list includes!: ${names.firstname}`)
+
+    })
+    // console.log(db.User.findById(user.friends[0]))
+    // user.friends.forEach((friendId) => {
+      // friends.push(db.User.findById(friendId))
+    // })
+  })
+  // let friends = []
   // {friends: [1,2,3]}
-  user.friends.forEach((friendId) => {
-    friends.push(db.User.findById(friendId))
-  })
-  let events = []
+  // console.log(user)
+  
+  // let events = []
   // {events: [1,2,3]}
-  user.events.forEach((eventId) => {
-    events.push(db.User.findById(eventId))
+  // user.events.forEach((eventId) => {
+  //   events.push(db.User.findById(eventId))
+  // res.send(({ friends: friends, events: events }))
   })
-  res.send(({ friends: friends, events: events }))
-})
+
 
 // router.get('/addevent', function(req, res) {
 //     res.send('addevent')
