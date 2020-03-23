@@ -63,6 +63,7 @@ router.post('/addfriend', function(req, res) {
       if (!user.friends.includes(friend._id)){
         user.friends.push(friend._id)
       }
+
       if (!friend.friends.includes(user._id)){
         friend.friends.push(user._id)
       }
@@ -75,6 +76,7 @@ router.post('/addfriend', function(req, res) {
           console.log('Aww suck', err)
           res.status(503).send({ message: 'Error saving document' })
         })
+
     })
     .catch(err => {
       console.log('failed to find friend', err)
