@@ -78,17 +78,21 @@ function Addevent(props) {
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
-        <img src={restaurant.image_url} />
-        <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
-        <h5>{restaurant.rating}, {restaurant.price}</h5>
-        <h5>{restaurant.style}</h5>
-        {/* iterate over restaurant.location.display_address
-            for EACH item, put it in 'p' tag
-        */}
-        <div>
-        {restaurant.location.display_address.forEach(addressLine => <p>{addressLine}</p>)}
-        </div>
-        <button type="submit">+</button>
+            <div className="something">
+                <div className="leftbox">
+                    <img src={restaurant.image_url} className="apiimg" />
+                </div>
+                <div className="rightbox">
+                    <h2><a href={restaurant.url}>{restaurant.name}</a></h2>
+                    <h5>{restaurant.categories[0].title}</h5>
+                    <h5>Rating: {restaurant.rating}</h5>
+                    <h5>Price: {restaurant.price}</h5>
+                
+                    {restaurant.location.display_address.map(addressLine => <p>{addressLine}</p>)}
+                    <button type="submit">Add To List</button>
+                </div>
+            </div>
+            <hr></hr>
         </div>
   ))
 
@@ -115,6 +119,7 @@ function Addevent(props) {
             <div className="choose">
                 <h1 className="headtitle">Choose Your Restaurants</h1>
                 <div className="apibox">
+
                     <form method="POST" className="restaurantform" onSubmit={handleRestaurantSubmit} >
                         {restaurantList}
                     </form>

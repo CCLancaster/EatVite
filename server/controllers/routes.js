@@ -44,7 +44,7 @@ router.post('/addfriend', function(req, res) {
       if (!user.friends.includes(friend._id)){
         user.friends.push(friend._id)
       }
-      console.log(user)
+      console.log(`SUPP ${user}`)
     })
     .catch(err => {
       console.log('failed to find friend', err)

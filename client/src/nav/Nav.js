@@ -41,7 +41,7 @@ const Nav = props => {
   return (
     <div className="navbar">
         <div className="logobox">
-            <img src="./eatvitelogo.png" className="logo" alt='logo'/>
+            <img src="/eatvitelogo.png" className="logo" alt='logo'/>
         </div>
         <div className="links">
             <ul>
