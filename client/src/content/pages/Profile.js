@@ -24,6 +24,7 @@ function Profile(props) {
             console.log(response.data.err)
           } else {
             setFriendList(response.data)
+            console.log(response.data)
           }
         }).catch(err=>{
           setError(err.message)
@@ -59,6 +60,16 @@ function Profile(props) {
 
      if (!props.user) return <Redirect to='/' />
 
+    let friendsNamesList = props.user.friends.length < 1 ?
+    <h3>you have no friends!</h3> :
+    props.user.friends.map((friend, i) => {
+        console.log(friend)
+
+        return (<div key={`friendListitem-${i}`}>
+            <h5>{friend.firstname}</h5>
+        </div>)
+    })
+
     return (
         <div className="profile">
             <div className="friendlist">
@@ -67,6 +78,7 @@ function Profile(props) {
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
+                    {friendsNamesList}
                 </div>
                 <div className="popupcontainer">
                     <div>
