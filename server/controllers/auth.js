@@ -9,7 +9,7 @@ let cors = require('cors')
 router.post('/login', (req, res) => {
   console.log(req.body)
   // Find the user
-  db.User.findOne({ email: req.body.email }).populate('friends', 'name').populate('events')
+  db.User.findOne({ email: req.body.email }).populate('friends', 'firstname').populate('events')
   .then(user => {
     // Make sure the user exists and has a password
     if (!user || !user.password) {
