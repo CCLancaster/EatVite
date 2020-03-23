@@ -36,15 +36,32 @@ router.post('/addevent', function(req, res) {
 
 
 router.post('/addfriend', function(req, res) {
-    db.User.findOne(req.user.id)
+  console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+  console.log(req)
+    db.User.findById(req.user._id)
   .then(user => {
+    console.log(user)
     db.User.findOne({email: req.body.email})
+    
     .then(friend => {
-      console.log(friend)
+
+      console.log(`friend ${friend}`)
+      console.log(`user ${user}`)
       if (!user.friends.includes(friend._id)){
         user.friends.push(friend._id)
       }
-      console.log(user)
+      if (!friend.friends.includes(user._id)){
+        friend.friends.push(user._id)
+      }
+      friend.save()
+      console.log(`this is mutated user ${user}`)
+      user.save().then(() => {
+          res.send({ friends: user.friends})
+      })
+      .catch(err => {
+          console.log('Aww suck', err)
+          res.status(503).send({ message: 'Error saving document' })
+        })
     })
     .catch(err => {
       console.log('failed to find friend', err)
@@ -52,13 +69,6 @@ router.post('/addfriend', function(req, res) {
     })
 
    
-    user.save().then(() => {
-        res.send({ friends: user.friends})
-    })
-    .catch(err => {
-        console.log('Aww suck', err)
-        res.status(503).send({ message: 'Error saving document' })
-      })
   })
   .catch(err => {
     console.log('Server error', err)
