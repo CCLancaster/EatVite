@@ -31,6 +31,9 @@ function Profile(props) {
             console.log(err)
         });
      }
+
+     if (!props.user) return <Redirect to='/' />
+
     return (
         <div className="profile">
             <div className="friendlist">
