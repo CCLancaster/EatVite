@@ -8,11 +8,6 @@ router.get('/', function(req, res) {
       res.send('home')
 });
 
-
-
-
-
-
 router.get('/profile', function(req, res) {
   let user = db.User.findById(req.params.id)
   let friends = []
@@ -27,7 +22,6 @@ router.get('/profile', function(req, res) {
   })
   res.send(({ friends: friends, events: events }))
 })
-
 
 // router.get('/addevent', function(req, res) {
 //     res.send('addevent')
