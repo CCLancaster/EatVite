@@ -28,7 +28,7 @@ function Event(props) {
         console.log(err)
     });
 
-    const handleRestaurantSubmit = (e, restaurant => {
+    let handleRestaurantSubmit = (e, restaurant) => {
         e.preventDefault()
         setRestaurants([restaurant])
         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/:id`, {
@@ -45,7 +45,7 @@ function Event(props) {
                 return;
             }
         })
-    })
+    }
 
     let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show!</h3> : 

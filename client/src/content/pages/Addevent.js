@@ -68,9 +68,25 @@ function Addevent(props) {
      }
 
      // select restaurants and push them into the restaurant array in Event schema
-     const handleRestaurantSubmit = e => {
-         e.preventDefault()
-     }
+     const handleRestaurantSubmit = (e, newRestaurant => {
+        e.preventDefault()
+        setRestaurants([restaurant, ...newRestaurant])
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/:id`, {
+            method: 'PUT',
+            body:JSON.stringify({restaurants}),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.log(response);
+                return;
+            }
+        })
+    })
+
      
      
      console.log(restaurants);
@@ -120,7 +136,7 @@ function Addevent(props) {
                 <h1 className="headtitle">Choose Your Restaurants</h1>
                 <div className="apibox">
 
-                    <form method="POST" className="restaurantform" onSubmit={handleRestaurantSubmit} >
+                    <form method="POST" className="restaurantform" onSubmit={(e) => {handleRestaurantSubmit(e, newRestaurant);}} >
                         {restaurantList}
                     </form>
                 </div>
