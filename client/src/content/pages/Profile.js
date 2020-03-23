@@ -1,11 +1,36 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route, NavLink, Redirect } from "react-router-dom"
 import Addevent from "./Addevent";
+import axios from 'axios';
 
 function Profile(props) {
     let [friendName, setFriendName] = useState('')
      let [friendEmail, setFriendEmail] = useState('')
      let [friendPhone, setFriendPhone] = useState('')
+     let [friendList, setFriendList] = useState([])
+     let [error, setError] = useState(null)
+
+     useEffect(() => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
+            methos: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+          if (response.data.message) {
+            setError(response.data.message)
+            console.log(response.data.err)
+          } else {
+            setFriendList(response.data)
+          }
+        }).catch(err=>{
+          setError(err.message)
+          console.log(err)
+        });
+    }, [])
+     
 
      const handleFriendSubmit = e => {
         e.preventDefault()
@@ -37,8 +62,8 @@ function Profile(props) {
     return (
         <div className="profile">
             <div className="friendlist">
-                <div className="friendtitle">
-                    <h2>Friends</h2>
+                <div>
+                    <h1 className="headtitle">Friends</h1>
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
@@ -50,7 +75,7 @@ function Profile(props) {
                     
                     <div id="popup1" className="overlay">
 	                    <div className="popup">
-		                    <h2>Add A Friend</h2>
+		                    <h1>Add A Friend</h1>
 		                    <a className="close" href="#">&times;</a>
 		                    <div className="content">
 			                    <form className="friendform" method="POST" onSubmit={handleFriendSubmit}>
@@ -67,8 +92,8 @@ function Profile(props) {
 
             </div>
             <div className="events">
-                <div className="eventtitle">
-                    <h2>Events</h2>
+                <div>
+                    <h1 className="headtitle">Events</h1>
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
@@ -76,7 +101,7 @@ function Profile(props) {
                 <div>
 
 
-                    <button className="profilebtns"><NavLink to="/addevent">Add An Event</NavLink></button>
+                    <button className="profilebtns"><NavLink to="/eat/addevent">Add An Event</NavLink></button>
                 </div>
             </div>
         </div>

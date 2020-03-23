@@ -26,7 +26,7 @@ const Nav = props => {
       <span>
         <li>Hello {props.user.firstname}!</li>
         <li>
-          <Link to="/profile">Profile</Link>
+          <Link to="/eat/profile">Profile</Link>
         </li>
         <li>
           <Link to="/" onClick={handleLogout}>Log Out</Link>
@@ -36,16 +36,15 @@ const Nav = props => {
   }
   // TODO: If the user is logged in, show profile page and logout links
 
+
+
   return (
     <div className="navbar">
         <div className="logobox">
-            <img src="./eatvitelogo.png" className="logo" alt='logo'/>
+            <img src="/eatvitelogo.png" className="logo" alt='logo'/>
         </div>
         <div className="links">
             <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
             {links}
             </ul>
         </div>

@@ -38,17 +38,19 @@ function Event(props) {
     return(
         <div className="event">
             <div className="invitation">
-                <h1>You've Got An EatVite!</h1>
-                <h3>{event.title}</h3>
+                <h1 className="headtitle">You've Got An EatVite!</h1>
+                <h3>Title: 'Ex. Girl's Night Out!'
+                </h3>
                 <div className="inline">
                 <h3>Date: {event.date}</h3>
                 <h3>Time: {event.time}</h3>
                 </div>
                 <h3>From:</h3>
             </div>
+    
             <form method="POST" className="eventrestaurants" onSubmit={handleRestaurantSubmit}>
                 <div className="resoptions">
-                    <h1>Pick ONE restaurant from the list below!</h1>
+                    <h1 className="headtitle">Pick ONE restaurant from the list below!</h1>
                         <div>List of chosen restaurants:
                             {restaurantList}
                         </div>

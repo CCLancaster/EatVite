@@ -40,7 +40,7 @@ function Login(props) {
     }
 
     if (props.user) {
-        return <Redirect to="/profile" />
+        return <Redirect to="/eat/profile" />
     }
 
     return (

@@ -38,16 +38,13 @@ a:hover {
   z-index: 50;
 }
 
-.inline {
-  border: 1px solid black;
-  width: 80%;
-  display: flex;
-  margin: auto;
+.headtitle {
+  background-color: #f3f3f3;
+  width: 99.8%;
+  height: 50px;
+  margin: 2px 0px 15px 1px;
   padding: 0px;
-  justify-content: space-around;
-
 }
-
 /*---------------------------Signup/Login Forms----------------------------*/
 
 .signForm {
@@ -62,6 +59,7 @@ a:hover {
   text-align: center;
   border-radius: 4px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding-bottom: 40px;
 }
 
 .logform {
@@ -109,17 +107,6 @@ button {
   height: 750px;
 }
 
-.friendtitle {
-  background: #f3f3f3;
-  width: 99.5%;
-  border: 1px transparent solid;
-}
-.eventtitle {
-  background: #f3f3f3;
-  width: 99.8%;
-  border: 1px transparent solid;
-}
-
 .profilebtns {
   width: 100%;
   padding: 10px;
@@ -128,7 +115,8 @@ button {
 
 .profilecontent {
   color: red;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   width: 80%;
   height: 80%;
   align-self: center;
@@ -137,7 +125,7 @@ button {
 
 .friendlist {
   border: 1px solid black;
-  height: 85%;
+  height: 100%;
   width: 28%;
   border-radius: 4px;
   display: flex;
@@ -150,7 +138,7 @@ button {
 
 .events {
   border: 1px solid black;
-  height: 85%;
+  height: 100%;
   width: 67%;
   border-radius: 4px;
   display: flex;
@@ -254,14 +242,6 @@ button {
   margin-bottom: 50px;
 }
 
-.headtitle {
-  background-color: #f3f3f3;
-  width: 100%;
-  height: 50px;
-  margin: 2px 0px 15px 0px;
-  padding: 5px 0px
-}
-
 .eatform{
   width: 60%;   
   margin: auto;
@@ -278,6 +258,26 @@ button {
   margin: 30px auto;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   overflow: auto;
+  /* display: flex; */
+
+}
+.something {
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+.leftbox {
+  width: 50%;
+
+}
+
+.rightbox {
+  width: 50%;
+}
+.apiimg {
+  width: 100%;
+  /* height: 300px; */
 }
 
 /*------------------------------Event.js ----------------------------*/
@@ -304,6 +304,10 @@ button {
     top: 0px;
     left: 0px;
     z-index: 0; 
+}
+
+div {
+  z-index: 0;
 }
 
 .cb-slideshow li span { 
@@ -335,28 +339,30 @@ button {
 
 .cb-slideshow li div h3 { 
   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-  font-size: 10em;
+  font-size: 15em;
   text-align: left;
   padding: 0;
+  width: 50%;
+  text-align: center;
 
 }
 
 .cb-slideshow li:nth-child(1) span { 
-  background-image: url('https://www.ezcater.com/wp-content/uploads/2018/04/shutterstock_629965877.jpg') 
+  background-image: url('https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/carne-asada-tacos-2.jpg') 
 }
 
 .cb-slideshow li:nth-child(2) span { 
-  background-image: url('https://bamboosushi.com/wp-content/uploads/2019/12/Our-Menu_Restaurant-of-Change_Bamboo-Sushi-1900x840.png');
+  background-image: url('https://culturecrusaders.com/wp-content/uploads/2020/01/ZjK6w7d3Soa4y9kLqsOr_DIN_TAI_FUNG_STYLE_XIAO_LONG_BAO_SOUP_DUMPLINGS_025.jpg');
   animation-delay: 6s; 
 }
 
 .cb-slideshow li:nth-child(3) span { 
-  background-image: url('https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/carne-asada-tacos-2.jpg');
+  background-image: url('https://www.ezcater.com/wp-content/uploads/2018/04/shutterstock_629965877.jpg');
   animation-delay: 12s; 
 }
 
 .cb-slideshow li:nth-child(4) span { 
-  background-image: url('https://culturecrusaders.com/wp-content/uploads/2020/01/ZjK6w7d3Soa4y9kLqsOr_DIN_TAI_FUNG_STYLE_XIAO_LONG_BAO_SOUP_DUMPLINGS_025.jpg');
+  background-image: url('https://bamboosushi.com/wp-content/uploads/2019/12/Our-Menu_Restaurant-of-Change_Bamboo-Sushi-1900x840.png');
   animation-delay: 18s; 
 }
 

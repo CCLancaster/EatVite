@@ -13,14 +13,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//     res.status(200).send({ message: 'Welcome'});
-// });
-
-// include my controller
-// app.use('/eat', require('./controllers/routes.js'))
-
-// app.use('/auth', require('./controllers/auth.js'))
+app.get('/', function(req, res) {
+  res.send('home')
+});
 
 app.use('/auth', cors(), expressJwt({
   secret: process.env.JWT_SECRET

@@ -4,29 +4,34 @@ const axios = require('axios');
 
 var db = require('../models');
 
-router.get('/', function(req, res) {
-      res.send('home')
-});
-
-
-
-
 
 
 router.get('/profile', function(req, res) {
-  let user = db.User.findById(req.params.id)
-  let friends = []
+  db.User.findById(req.user._id)
+  .then(user => {
+    // console.log(user.friends)
+    // console.log(user.events)
+    db.User.findOne({_id: user.friends[0]})
+    .then(names => {
+      res.send(names.firstname)
+      console.log(`Your fluffing friends list includes!: ${names.firstname}`)
+
+    })
+    // console.log(db.User.findById(user.friends[0]))
+    // user.friends.forEach((friendId) => {
+      // friends.push(db.User.findById(friendId))
+    // })
+  })
+  // let friends = []
   // {friends: [1,2,3]}
-  user.friends.forEach((friendId) => {
-    friends.push(db.User.findById(friendId))
-  })
-  let events = []
+  // console.log(user)
+  
+  // let events = []
   // {events: [1,2,3]}
-  user.events.forEach((eventId) => {
-    events.push(db.User.findById(eventId))
+  // user.events.forEach((eventId) => {
+  //   events.push(db.User.findById(eventId))
+  // res.send(({ friends: friends, events: events }))
   })
-  res.send(({ friends: friends, events: events }))
-})
 
 
 // router.get('/addevent', function(req, res) {
@@ -44,15 +49,34 @@ router.post('/addevent', function(req, res) {
 
 
 router.post('/addfriend', function(req, res) {
-    db.User.findOne(req.user.id)
+  console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+  console.log(req)
+    db.User.findById(req.user._id)
   .then(user => {
+    console.log(user)
     db.User.findOne({email: req.body.email})
+    
     .then(friend => {
-      console.log(friend)
+
+      console.log(`friend ${friend}`)
+      console.log(`user ${user}`)
       if (!user.friends.includes(friend._id)){
         user.friends.push(friend._id)
       }
-      console.log(user)
+
+      if (!friend.friends.includes(user._id)){
+        friend.friends.push(user._id)
+      }
+      friend.save()
+      console.log(`this is mutated user ${user}`)
+      user.save().then(() => {
+          res.send({ friends: user.friends})
+      })
+      .catch(err => {
+          console.log('Aww suck', err)
+          res.status(503).send({ message: 'Error saving document' })
+        })
+
     })
     .catch(err => {
       console.log('failed to find friend', err)
@@ -60,13 +84,6 @@ router.post('/addfriend', function(req, res) {
     })
 
    
-    user.save().then(() => {
-        res.send({ friends: user.friends})
-    })
-    .catch(err => {
-        console.log('Aww suck', err)
-        res.status(503).send({ message: 'Error saving document' })
-      })
   })
   .catch(err => {
     console.log('Server error', err)
