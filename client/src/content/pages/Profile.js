@@ -76,7 +76,7 @@ function Profile(props) {
                 <div>
 
 
-                    <button className="profilebtns"><NavLink to="/addevent">Add An Event</NavLink></button>
+                    <button className="profilebtns"><NavLink to="/eat/addevent">Add An Event</NavLink></button>
                 </div>
             </div>
         </div>

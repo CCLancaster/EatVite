@@ -46,13 +46,13 @@ function Signup(props) {
     }
 
     if (props.user) {
-        return <Redirect to="/profile" />
+        return <Redirect to="/eat/profile" />
     }
 
     return (
         <div className="signForm">
-            <h4>Save Yourself Some Time And</h4>
-            <h2>Sign Up Now</h2>
+            <h4>Save Yourself Some Time</h4>
+            <h1>Sign Up Now</h1>
             <form className="signup" method="POST" onSubmit={handleSubmit}>
                 
                 

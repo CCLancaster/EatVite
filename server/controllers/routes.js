@@ -4,13 +4,6 @@ const axios = require('axios');
 
 var db = require('../models');
 
-router.get('/', function(req, res) {
-      res.send('home')
-});
-
-
-
-
 
 
 router.get('/profile', function(req, res) {
@@ -27,7 +20,6 @@ router.get('/profile', function(req, res) {
   })
   res.send(({ friends: friends, events: events }))
 })
-
 
 // router.get('/addevent', function(req, res) {
 //     res.send('addevent')

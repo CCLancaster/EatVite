@@ -17,11 +17,11 @@ const Content = props => {
       <Route path="/auth/login" render={
         () => <Login user={props.user} updateUser={props.updateUser} />
       } />
-      <Route path="/profile" render={
+      <Route path="/eat/profile" render={
         () => <Profile user={props.user} />
       } />
-     <Route path="/addevent" render={ () => <Addevent user={props.user} response={props.restaurant} /> }/>
-     <Route path="/event" render={ () => <Event user={props.user} /> }/>
+     <Route path="/eat/addevent" render={ () => <Addevent user={props.user} response={props.restaurant} /> }/>
+     <Route path="/eat/event" render={ () => <Event user={props.user} /> }/>
     </div>
   )
 }
