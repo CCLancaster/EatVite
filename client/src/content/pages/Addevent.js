@@ -61,20 +61,6 @@ function Addevent(props) {
             console.log(data)
             // map through data.restaurant for the deets
             setRestaurants(data.restaurant)
-            // {
-            // img: data.restaurant.image_url,
-            // name: data.restaurant.name,
-            // rating: data.restaurant.rating,
-            // style: data.restaurant.categories.title,
-            // address: {
-            //     street: data.restaurant.location.address1,
-            //     city: data.restaurant.location.city,
-            //     state: data.restaurant.location.state,
-            //     zipcode: data.restaurant.location.zip_code
-            // },
-            // price: data.restaurant.price,
-            // url: data.restaurant.url
-            // })
             })
         .catch(err=>{
             console.log(err)
@@ -102,12 +88,10 @@ function Addevent(props) {
         <div>
         {restaurant.location.display_address.forEach(addressLine => <p>{addressLine}</p>)}
         </div>
+        <button type="submit">+</button>
         </div>
   ))
 
-    //  if (props.user) {
-    //      return <Redirect to="/profile" />
-    //  }
 
     return (
         <div className="addevent">
@@ -133,7 +117,6 @@ function Addevent(props) {
                 <div className="apibox">
                     <form method="POST" className="restaurantform" onSubmit={handleRestaurantSubmit} >
                         {restaurantList}
-                        <button type="submit">+</button>
                     </form>
                 </div>
                 <button type="submit">Send EatVite!</button>

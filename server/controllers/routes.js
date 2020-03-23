@@ -4,9 +4,7 @@ const axios = require('axios');
 
 var db = require('../models');
 
-router.get('/', function(req, res) {
-      res.send('home')
-});
+
 
 router.get('/profile', function(req, res) {
   let user = db.User.findById(req.params.id)
