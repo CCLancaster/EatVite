@@ -20,8 +20,8 @@ const Content = props => {
       <Route path="/profile" render={
         () => <Profile user={props.user} />
       } />
-     <Route path="/addevent" render={ () => <Addevent user={props.user} updateUser={props.updateUser} response={props.restaurant} /> }/>
-     <Route path="/event" render={ () => <Event /> }/>
+     <Route path="/addevent" render={ () => <Addevent user={props.user} response={props.restaurant} /> }/>
+     <Route path="/event" render={ () => <Event user={props.user} /> }/>
     </div>
   )
 }
