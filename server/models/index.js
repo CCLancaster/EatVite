@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Connect to Mongo database
 mongoose.connect(
-  process.env.MONGO_URL || 'mongodb://localhost:27017/museumexplorer',
+  process.env.MONGO_URL || 'mongodb://localhost:27017/eatvite',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
 );
 let db = mongoose.connection;
