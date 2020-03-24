@@ -52,7 +52,7 @@ function Login(props) {
                         <h2>Login</h2>
                         <form method="POST" onSubmit={handleSubmit}>
                             <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-                            <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                            <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                             <button type="submit">Submit</button>
                         </form>
                         <p>New user?
