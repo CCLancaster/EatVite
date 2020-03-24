@@ -21,7 +21,7 @@ const Content = props => {
         () => <Profile user={props.user} updateUser={props.updateUser} />
       } />
      <Route path="/eat/addevent" render={ () => <Addevent user={props.user} response={props.restaurant} /> }/>
-     <Route path="/eat/event" render={ () => <Event user={props.user} /> }/>
+     <Route path="/eat/event/:id" render={ () => <Event user={props.user} event={props.event} response={props.event} /> }/>
     </div>
   )
 }

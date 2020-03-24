@@ -1,39 +1,65 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Event(props) {
 
     let [event, setEvent] = useState([])
     let [restaurants, setRestaurants] = useState([])
+    let [error, setError] = useState(null)
 
     //fetch the Event information from our Event schema
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/:id`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
             }
         })
-    })
-    .then(event => {
-        console.log(event)
-        if (!event) {
-            console.log("Error fetching event!")
-        } else {
-            setEvent(event)
-            setRestaurants(event.restaurants)
-        }
-    })
-    .catch(err => {
-        console.log(err)
+        .then(response => {
+            if (!response.ok) {
+                console.log(response);
+                return
+            } else {
+                response.json().then(result=>{
+                    console.log(result)
+                    setEvent(result)
+                // setEvent(response.map(event => {
+                //     return {
+                //         title: event.title,
+                //         date: event.date,
+                //         time: event.time,
+                //         attendees: event.attendees.join(', ')
+                //     }
+                // }))
+                // setRestaurants(event.restaurants.map(resties=>{
+                //     return {
+                //         name: resties.name,
+                //         rating: resties.rating,
+                //         style: resties.categories[0].title,
+                //         address: resties.location.display_address.join('\n'),
+                //         price: resties.price,
+                //         url: resties.url,
+                //         phone: resties.phone,
+                //         image_url: resties.image_url
+                //     }
+                // }))
+                console.log(`this is the event: ${event}`)
+                console.log(`these are the restaurants: ${event.restaurants}`)
+            })
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
     });
 
-    let handleRestaurantSubmit = (e, restaurant) => {
+    const handleRestaurantSubmit = (e, finalRestaurant) => {
         e.preventDefault()
-        setRestaurants([restaurant])
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/:id`, {
+        setRestaurants([finalRestaurant])
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event._id}`, {
             method: 'PUT',
-            body:JSON.stringify({restaurants}),
+            body:JSON.stringify({ restaurant: finalRestaurant }),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
@@ -43,24 +69,27 @@ function Event(props) {
             if (!response.ok) {
                 console.log(response);
                 return;
+            } else {
+                return <Redirect to='/' />
             }
         })
+        
     }
 
     let restaurantList = restaurants.length < 1 ? 
         <h3>There are no restaurants to show!</h3> : 
         restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
-            <div className="something">
-            <div className="leftbox">
+            <div className="apideetcontainer">
+            <div className="boxes">
                     <img src={restaurant.image_url} className="apiimg" />
             </div>
-            <div className="rightbox">
+            <div className="boxes">
             <h2><a href={restaurant.url}>{restaurant.name}</a></h2>
-                    <h5>{restaurant.categories[0].title}</h5>
+                    <h5>{restaurant.style}</h5>
                     <h5>Rating: {restaurant.rating}</h5>
                     <h5>Price: {restaurant.price}</h5>
-                    {restaurant.location.display_address.map(addressLine => <p>{addressLine}</p>)}
+                    <p>{restaurant.address}</p>
                 <button type="submit" onClick={(e) => {handleRestaurantSubmit(e, restaurant);}}>Let's Eat!</button>
             </div>
             </div>
@@ -76,7 +105,7 @@ function Event(props) {
                     <h3>Date: {event.date}</h3>
                     <h3>Time: {event.time}</h3>
                 </div>
-                <h3>Invitees: </h3>{event.friends.map(name => <p> {name} </p>)}
+                <h3>Attendees: </h3><p> {event.attendees} </p>)}
             </div>
     
             <div className="restaurantform" >

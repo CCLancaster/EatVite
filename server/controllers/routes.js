@@ -117,12 +117,15 @@ router.post('/chooser', function(req, res) {
 })
 
 router.get('/event/:id', function(req, res) {
-  db.Event.findById(req.params.id)
+  console.log(req.params)
+  console.log('titties')
+  db.Event.find({"_id" : req.params.id})
   .then(event => res.send(event))
+  console.log(event)
   .catch(err => res.send({ message: 'Error in getting one event', err}));
 })
 
-// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
+// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the method portion of the fetch call-w00t!)
 router.put('/event/:id', function(req, res) {
   console.log(req.params.id)
   console.log('butts')
