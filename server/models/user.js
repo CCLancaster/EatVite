@@ -33,16 +33,16 @@ const userSchema = new mongoose.Schema({
 });
 
 
-const eventSchema = new mongoose.Schema({
-  title: String,
-  date: String,
-  time: String,
-  friends: [userSchema],
-  restaurant: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Restaurant'
-  }]
-})
+// const eventSchema = new mongoose.Schema({
+//   title: String,
+//   date: String,
+//   time: String,
+//   friends: [userSchema],
+//   restaurant: [{
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Restaurant'
+//   }]
+// })
 
 // Use bcrypt to hash password
 userSchema.pre('save', function (next) {

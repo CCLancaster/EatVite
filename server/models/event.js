@@ -1,20 +1,25 @@
 const mongoose = require('mongoose');
 
-
-
+const restaurantSchema = new mongoose.Schema({
+  name: String,
+  rating: String,
+  style: String,
+  address: String,
+  price: String,
+  url: String,
+  phone: String,
+  image_url: String
+})
 
 const eventSchema = new mongoose.Schema({
   title: String,
   date: String,
   time: String,
-  friends: [{
+  attendees: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
-  restaurants: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Restaurant'
-  }]
+  restaurants: [restaurantSchema]
 })
 
 // // Use schema to create model

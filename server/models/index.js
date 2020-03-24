@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Connect to Mongo database
 mongoose.connect(
   process.env.MONGO_URL || 'mongodb://localhost:27017/museumexplorer',
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
 );
 let db = mongoose.connection;
 db.once('open', () => {
@@ -19,4 +19,4 @@ db.on('error', err => {
 // Make sure to export both your Museum and Piece models!
 module.exports.User = require('./user');
 module.exports.Event = require('./event');
-module.exports.Restaurant = require('./restaurants');
+

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route, NavLink, Redirect } from "react-router-dom"
 import Addevent from "./Addevent";
 
@@ -6,6 +6,33 @@ function Profile(props) {
     let [friendName, setFriendName] = useState('')
      let [friendEmail, setFriendEmail] = useState('')
      let [friendPhone, setFriendPhone] = useState('')
+     let [friendList, setFriendList] = useState([])
+     let [eventList, setEventList] = useState([])
+     let [error, setError] = useState(null)
+
+     useEffect(() => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+            }
+        })
+        .then(response => {
+          if (response.data.message) {
+            setError(response.data.message)
+            console.log(response.data.err)
+          } else {
+            setFriendList(response.data)
+            setEventList(response.data)
+            console.log(response.data)
+          }
+        }).catch(err=>{
+          setError(err.message)
+          console.log(err)
+        });
+    }, [])
+     
 
      const handleFriendSubmit = e => {
         e.preventDefault()
@@ -34,6 +61,27 @@ function Profile(props) {
 
      if (!props.user) return <Redirect to='/' />
 
+    let friendsNamesList = props.user.friends.length < 1 ?
+    <h3>you have no friends!</h3> :
+    props.user.friends.map((friend, i) => {
+        console.log(friend)
+
+        return (<div key={`friendListitem-${i}`}>
+            <h5>{friend.firstname}</h5>
+        </div>)
+    })
+
+    let myEventsList = props.user.events.length < 1 ?
+    <h3>you have no events!</h3> :
+    props.user.events.map((event, i) => {
+        console.log(event)
+
+        return (<div key={`eventListitem-${i}`}>
+             <h5>{event.title}</h5>
+        </div>)
+    })
+            
+
     return (
         <div className="profile">
             <div className="friendlist">
@@ -42,6 +90,7 @@ function Profile(props) {
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
+                    {friendsNamesList}
                 </div>
                 <div className="popupcontainer">
                     <div>
@@ -64,14 +113,14 @@ function Profile(props) {
                 </div>
                 </div>
 
-
-            </div>
+            </div>   
             <div className="events">
                 <div>
                     <h1 className="headtitle">Events</h1>
                 </div>
                 <div className="profilecontent">
                     <h4>BACKEND CONTENT</h4>
+                    {myEventsList}
                 </div>
                 <div>
 

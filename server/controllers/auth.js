@@ -9,7 +9,7 @@ let cors = require('cors')
 router.post('/login', (req, res) => {
   console.log(req.body)
   // Find the user
-  db.User.findOne({ email: req.body.email }).populate('friends', 'name').populate('events')
+  db.User.findOne({ email: req.body.email }).populate('friends', 'firstname').populate('events')
   .then(user => {
     // Make sure the user exists and has a password
     if (!user || !user.password) {
@@ -25,6 +25,7 @@ router.post('/login', (req, res) => {
     let token = jwt.sign(user.toJSON(), process.env.JWT_SECRET, {
       expiresIn: 60 * 60 * 8 // 8 hours in seconds
     })
+    console.log(`login ${token}, email: ${req.body.email}`)
     res.send({ token })
   })
   .catch(err => {
@@ -39,7 +40,7 @@ router.post('/signup', (req, res) => {
   // Look up the user (make sure they aren't a duplicate)
   db.User.findOne({ email: req.body.email })
   .then(email => {
-    console.log(typeof email)
+    
     // If the user exists, do NOT let them create another account!
     if (email) {
       // Bad - this is signup, they shouldn't already exist
@@ -50,11 +51,11 @@ router.post('/signup', (req, res) => {
     db.User.create(req.body)
     .then(newUser => {
       // Cool - I have a user. Now I need to make them a token!
-      console.log(newUser)
       let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
         expiresIn: 60 * 60 * 8 // 8 hours in seconds
       })
-
+      
+      console.log(`new user: ${newUser} token: ${token}`)
       // Send that token
       res.send({ token })
     })

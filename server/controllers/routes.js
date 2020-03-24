@@ -7,44 +7,81 @@ var db = require('../models');
 
 
 router.get('/profile', function(req, res) {
-  let user = db.User.findById(req.params.id)
-  let friends = []
+  db.User.findById(req.user._id).populate('friends').populate('events')
+  .then(user => {
+    user.friends.forEach(friend=>console.log(`${friend.firstname}`))
+    user.events.forEach(event=>console.log(`${event}`))
+    console.log(user)
+      res.send(user)
+
+    
+    // console.log(user.friends)
+    // console.log(user.events)
+    // db.User.findOne({_id: user.friends[0]})
+    // .then(names => {
+    //   res.send(names.firstname)
+    //   console.log(`Your fluffing friends list includes!: ${names.firstname}`)
+
+    // })
+    // console.log(db.User.findById(user.friends[0]))
+    // user.friends.forEach((friendId) => {
+      // friends.push(db.User.findById(friendId))
+    // })
+  })
+  // let friends = []
   // {friends: [1,2,3]}
-  user.friends.forEach((friendId) => {
-    friends.push(db.User.findById(friendId))
-  })
-  let events = []
+  // console.log(user)
+  
+  // let events = []
   // {events: [1,2,3]}
-  user.events.forEach((eventId) => {
-    events.push(db.User.findById(eventId))
+  // user.events.forEach((eventId) => {
+  //   events.push(db.User.findById(eventId))
+  // res.send(({ friend: friend.firstname, event: event }))
   })
-  res.send(({ friends: friends, events: events }))
-})
+
 
 // router.get('/addevent', function(req, res) {
 //     res.send('addevent')
 // })
 
 router.post('/addevent', function(req, res) {
-    db.Event.create(req.body)
+  db.Event.create(req.body)
   .then(event => {
     //this is were we use the friend name we just entered into the event table to find the user id
-    //db.User.findOne()
-    res.redirect('chooser')
+    db.User.updateMany({ id: { $in: req.body.attendees } }, {$addToSet:{events: event}}).then(updatedMeta=>res.send(event))
   }).catch(err=>res.send(err))  
 })
 
 
 router.post('/addfriend', function(req, res) {
-    db.User.findOne(req.user.id)
+  console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+  console.log(req)
+    db.User.findById(req.user._id)
   .then(user => {
+    console.log(user)
     db.User.findOne({email: req.body.email})
+    
     .then(friend => {
-      console.log(friend)
+
+      console.log(`friend ${friend}`)
+      console.log(`user ${user}`)
       if (!user.friends.includes(friend._id)){
         user.friends.push(friend._id)
       }
-      console.log(`SUPP ${user}`)
+
+      if (!friend.friends.includes(user._id)){
+        friend.friends.push(user._id)
+      }
+      friend.save()
+      console.log(`this is mutated user ${user}`)
+      user.save().then(() => {
+          res.send({ friends: user.friends})
+      })
+      .catch(err => {
+          console.log('Aww suck', err)
+          res.status(503).send({ message: 'Error saving document' })
+        })
+
     })
     .catch(err => {
       console.log('failed to find friend', err)
@@ -52,13 +89,6 @@ router.post('/addfriend', function(req, res) {
     })
 
    
-    user.save().then(() => {
-        res.send({ friends: user.friends})
-    })
-    .catch(err => {
-        console.log('Aww suck', err)
-        res.status(503).send({ message: 'Error saving document' })
-      })
   })
   .catch(err => {
     console.log('Server error', err)
@@ -83,7 +113,26 @@ router.post('/chooser', function(req, res) {
           console.log(err);
           res.send('error');
     // res.send(restaurant)
+  })
 })
+
+router.get('/event/:id', function(req, res) {
+  db.Event.findById(req.params.id)
+  .then(event => res.send(event))
+  .catch(err => res.send({ message: 'Error in getting one event', err}));
+})
+
+// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
+router.put('/event/:id', function(req, res) {
+  console.log(req.params.id)
+  console.log('butts')
+  db.Event.findByIdAndUpdate(req.params.id, { $push: { restaurants: req.body.restaurant} })
+  .then(event => {
+    console.log(event)
+    //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
+    res.send(event)
+  })
+
 })
 
 
