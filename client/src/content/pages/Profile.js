@@ -71,17 +71,35 @@ function Profile(props) {
         </div>)
     })
 
+    
     let myEventsList = props.user.events.length < 1 ?
     <h3>you have no events!</h3> :
     props.user.events.map((event, i) => {
         console.log(event)
-
+        let resNames;
         return (<div key={`eventListitem-${i}`}>
              <h5>{event.title}</h5>
              <h5>{event.date}</h5>
              <h5>{event.time}</h5>
-             <h5>{event.friends}</h5>
-             <h5>{event.restauants}</h5>
+             <h5>{event.attendees[0].firstname}</h5> 
+             <div>{event.restaurants.forEach((butt) => {
+                 resNames = butt.name;
+                 console.log({resNames})
+                 
+             })}</div>
+             
+             
+             <h5>restaurant: {event.restaurants[0].name} OR {event.restaurants[1].name}</h5>
+             <hr></hr>
+
+             
+
+             
+             {/* {event.restaurants.length < 1 ? '': props.user.events.restaurants.map((resi, i) => {
+                 console.log(resi) */}
+             {/* })} */}
+             {/* <h5>{event.restaurants}</h5> */}
+             {/* <h5>{event}</h5> */}
              
         </div>)
     })
