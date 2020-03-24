@@ -45,11 +45,10 @@ router.get('/profile', function(req, res) {
 // })
 
 router.post('/addevent', function(req, res) {
-    db.Event.create(req.body)
+  db.Event.create(req.body)
   .then(event => {
     //this is were we use the friend name we just entered into the event table to find the user id
-    //db.User.findOne()
-    res.redirect('chooser')
+    db.User.updateMany({ _id: { $in: req.body.attendees } }, {$addToSet:{events: event}}).then(updatedMeta=>res.send(event))
   }).catch(err=>res.send(err))  
 })
 
@@ -114,7 +113,26 @@ router.post('/chooser', function(req, res) {
           console.log(err);
           res.send('error');
     // res.send(restaurant)
+  })
 })
+
+router.get('/event/:id', function(req, res) {
+  db.Event.findById(req.params.id)
+  .then(event => res.send(event))
+  .catch(err => res.send({ message: 'Error in getting one event', err}));
+})
+
+// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
+router.put('/event/:id', function(req, res) {
+  console.log(req.params.id)
+  console.log('butts')
+  db.Event.findByIdAndUpdate(req.params.id, { $push: { restaurants: req.body.restaurant} })
+  .then(event => {
+    console.log(event)
+    //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
+    res.send(event)
+  })
+
 })
 
 

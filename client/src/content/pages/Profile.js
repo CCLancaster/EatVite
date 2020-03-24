@@ -1,7 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Link, Route, NavLink, Redirect } from "react-router-dom"
 import Addevent from "./Addevent";
-import axios from 'axios';
 
 function Profile(props) {
     let [friendName, setFriendName] = useState('')
@@ -13,7 +12,7 @@ function Profile(props) {
 
      useEffect(() => {
         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
-            methos: 'GET',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
