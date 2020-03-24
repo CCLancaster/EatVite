@@ -130,7 +130,7 @@ function Addevent(props) {
                     <button disabled={chosenRestaurants.find(chosenRest=>chosenRest.name === restaurant.name) ? true : false} type="submit" onClick={(e) => {handleRestaurantSubmit(e, restaurant);}} >Add To List</button>
                 </div>
             </div>
-            <hr></hr>
+            <hr/>
         </div>
   ))
 

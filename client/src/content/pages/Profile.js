@@ -38,7 +38,6 @@ function Profile(props) {
      
 
      const handleFriendSubmit = e => {
-        e.preventDefault()
         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/addfriend`, {
             method: 'POST',
             body: JSON.stringify({
@@ -72,7 +71,12 @@ function Profile(props) {
 
         return (
         <div className="itemlist" key={`friendListitem-${i}`}>
-            <h3>{friend.firstname}</h3>
+            <div className="friends">
+                <img src="https://i.dlpng.com/static/png/4296907-user-outline-people-person-icon-with-png-and-vector-format-for-people-icon-png-512_512_preview.webp" className="friendpic" />
+                <h3>{friend.firstname}</h3>
+                <h1></h1>
+            </div>
+            <hr/>
         </div>)
     })
 
@@ -87,7 +91,7 @@ function Profile(props) {
                 <h3>{event.title}</h3>
              <h5>Time: {event.time}</h5>
              <h5>Date: {event.date}</h5>
-             <h5>{event.attendees[0].firstname}, {event.attendees[1].firstname}</h5>
+             <h5>{event.attendees[0].firstname} & {event.attendees[1].firstname}</h5>
              {event.restauants && event.restauants.length === 1 ? <h5>{event.restaurants[0]}</h5> : <h5>Choose your Restaurant</h5>}
              </Link></button>
              
@@ -112,13 +116,13 @@ function Profile(props) {
                     <div id="popup1" className="overlay">
 	                    <div className="popup">
 		                    <h1>Add A Friend</h1>
-		                    <a className="close" href="#">&times;</a>
+		                    
 		                    <div className="content">
-			                    <form className="friendform" method="POST" onSubmit={handleFriendSubmit}>
+			                    <form className="friendform" method="POST" >
                                     <input type="text" name="name" onChange={e => setFriendName(e.target.value)} placeholder="Name" />
                                     <input type="text" name="email" onChange={e => setFriendEmail(e.target.value)} placeholder="Email" />
                                     <input type="text" name="phone" onChange={e => setFriendPhone(e.target.value)} placeholder="Phone Number" />
-                                    <button type="submit">Submit</button>
+                                    <button type="submit"> <a className="close" href="#" onClick={handleFriendSubmit}>Submit</a></button>
                                 </form>
 		                    </div>
 	                </div>

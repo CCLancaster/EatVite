@@ -220,7 +220,16 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/*--------------------------Events(not the js)----------------------------------*/
+.friends {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.friendpic {
+  height: 50px;
+}
+/*--------------------------Events(not the js)------------------------*/
 
 .events {
   border: 1px solid black;
@@ -265,16 +274,11 @@ button {
   color: #333;
   font-family: Tahoma, Arial, sans-serif;
 }
+
 .popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
   transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
 }
+
 .popup .close:hover {
   color: red;
 }
