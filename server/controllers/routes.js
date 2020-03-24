@@ -137,7 +137,7 @@ router.get('/event/:id', function(req, res) {
 router.put('/event/:id', function(req, res) {
   console.log(req.params.id)
   console.log('butts')
-  db.Event.findByIdAndUpdate(req.params.id, { $push: { restaurants: req.body.restaurant} })
+  db.Event.findByIdAndUpdate(req.params.id, { $addToSet: { restaurants: req.body.restaurant} })
   .then(event => {
     console.log(event)
     //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
@@ -146,6 +146,17 @@ router.put('/event/:id', function(req, res) {
 
 })
 
+router.put('/event/one/:id', function(req, res) {
+  console.log(req.params.id)
+  console.log('butts')
+  db.Event.findByIdAndUpdate(req.params.id, { $set: { restaurants: req.body.restaurant} })
+  .then(event => {
+    console.log(event)
+    //will need more details to grab and update for below section of code from event console.log (or setState on Event page?):
+    res.send(event)
+  })
+
+})
 router.post('/sendEatVite', function(req, res) {
 
 var transporter = nodemailer.createTransport({
