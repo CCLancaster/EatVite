@@ -66,8 +66,9 @@ function Profile(props) {
     props.user.friends.map((friend, i) => {
         console.log(friend)
 
-        return (<div key={`friendListitem-${i}`}>
-            <h5>{friend.firstname}</h5>
+        return (
+        <div className="itemlist" key={`friendListitem-${i}`}>
+            <h3>{friend.firstname}</h3>
         </div>)
     })
 
@@ -76,30 +77,15 @@ function Profile(props) {
     <h3>you have no events!</h3> :
     props.user.events.map((event, i) => {
         console.log(event)
-        let resNames;
-        return (<div key={`eventListitem-${i}`}>
-             <h5>{event.title}</h5>
-             <h5>{event.date}</h5>
-             <h5>{event.time}</h5>
-             <h5>{event.attendees[0].firstname}</h5> 
-             <div>{event.restaurants.forEach((butt) => {
-                 resNames = butt.name;
-                 console.log({resNames})
-                 
-             })}</div>
-             
-             
-             <h5>restaurant: {event.restaurants[0].name} OR {event.restaurants[1].name}</h5>
-             <hr></hr>
 
-             
-
-             
-             {/* {event.restaurants.length < 1 ? '': props.user.events.restaurants.map((resi, i) => {
-                 console.log(resi) */}
-             {/* })} */}
-             {/* <h5>{event.restaurants}</h5> */}
-             {/* <h5>{event}</h5> */}
+        return (
+        <div className="itemlist" key={`eventListitem-${i}`}>
+            <button className="itemsbtn" type="submit"><a href="">
+                <h3>{event.title}</h3>
+             <h5>Time: {event.time}</h5>
+             <h5>Date: {event.date}</h5>
+             <h5>{event.attendees}</h5>
+             <h5>{event.restauants}</h5></a></button>
              
         </div>)
     })
@@ -112,7 +98,6 @@ function Profile(props) {
                     <h1 className="headtitle">Friends</h1>
                 </div>
                 <div className="profilecontent">
-                    <h4>BACKEND CONTENT</h4>
                     {friendsNamesList}
                 </div>
                 <div className="popupcontainer">
@@ -142,7 +127,6 @@ function Profile(props) {
                     <h1 className="headtitle">Events</h1>
                 </div>
                 <div className="profilecontent">
-                    <h4>BACKEND CONTENT</h4>
                     {myEventsList}
                 </div>
                 <div>
