@@ -54,9 +54,10 @@ function Profile(props) {
         .then(response => {
             console.log(`${response}`)
             return response.json()
-            }).then((data) => {
-                console.log(data)
-            })
+        }).then((data) => {
+            console.log(data)
+        }).then((e) => {
+        })
         .catch(err=>{
             console.log(err)
         });

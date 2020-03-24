@@ -99,6 +99,7 @@ function Event(props) {
             </div>
         </div>
         ))
+        if (!props.user) return <Redirect to='/' />
 
     return(
         <div className="event">
@@ -115,7 +116,7 @@ function Event(props) {
             <div className="restaurantform" >
                 <div className="resoptions">
                     <h1 className="headtitle">Pick ONE restaurant from the list below!</h1>
-                        <div>List of chosen restaurants:
+                        <div>
                             {restaurantList}
                         </div>
                 </div>

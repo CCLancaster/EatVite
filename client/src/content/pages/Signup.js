@@ -59,7 +59,7 @@ function Signup(props) {
                 <input type="text" name="firstname" placeholder="First Name" onChange={e => setFirstname(e.target.value)} />
                 <input type="text" name="lastname" placeholder="Last Name" onChange={e => setLastname(e.target.value)} />
                 <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-                <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
                 <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={e => setPhone(e.target.value)} />
                
                 <button type="submit">Submit</button>
