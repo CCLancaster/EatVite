@@ -4,8 +4,9 @@ would like to cordially (and from at least 6 feet away) invite you to EatVite, a
 
 ## Our Site
 <img src="client/public/homepage.png" alt="homepage"> 
+<img src="client/public/login.png" alt="login"> 
 <img src="client/public/addfriend.png" alt="adding friend">
-<img src="client/public/addevent.png" alt="adding event">
+<img src="client/public/profile.png" alt="profile">
 <img src="client/public/addevent2.png" alt="adding restaurant">
 
 ## Technologies
@@ -14,7 +15,6 @@ would like to cordially (and from at least 6 feet away) invite you to EatVite, a
 - Express
 - React
 - React Router Dom
-- Axios
 - JWT
 - CSS
 

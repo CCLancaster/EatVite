@@ -22,6 +22,7 @@ const Content = props => {
       } />
      <Route path="/eat/addevent" render={ () => <Addevent user={props.user} response={props.restaurant} /> }/>
      <Route path="/eat/event/:id" render={ () => <Event user={props.user} event={props.event} response={props.event} /> }/>
+     <Route path="/eat/event/one/:id" render={ () => <Event user={props.user} event={props.event} response={props.event} /> }/>
     </div>
   )
 }
