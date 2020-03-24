@@ -41,11 +41,11 @@ const Nav = props => {
   return (
     <div className="navbar">
         <div className="logobox">
-            <img src="/eatvitelogo.png" className="logo" alt='logo'/>
+            <a href="/"><img src="/eatvitelogo.png" className="logo" alt='logo'/></a>
         </div>
         <div className="links">
             <ul>
-            {links}
+            {/* {links} */}
             </ul>
         </div>
     </div>

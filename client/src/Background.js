@@ -6,7 +6,7 @@ function Background(props) {
     <ul className="cb-slideshow">
         <li>
             <span>Image 01</span>
-            <div>
+            <div className="pushback">
                 <h3>
                     EXPLORE
                 </h3>
@@ -14,7 +14,7 @@ function Background(props) {
         </li>
         <li>
             <span>Image 02</span>
-            <div>
+            <div className="pushback">
                 <h3>
                     INVITE
                 </h3>
@@ -22,7 +22,7 @@ function Background(props) {
         </li>
         <li>
             <span>Image 03</span>
-            <div>
+            <div className="pushback">
                 <h3>
                     DECIDE
                 </h3>
@@ -30,7 +30,7 @@ function Background(props) {
         </li>
         <li>
             <span>Image 04</span>
-            <div>
+            <div className="pushback">
                 <h3>
                     EAT
                 </h3>
@@ -38,7 +38,7 @@ function Background(props) {
         </li>
         <li>
             <span>Image 05</span>
-            <div>
+            <div className="pushback"> 
                 <h3>
                     ENJOY
                 </h3>
@@ -46,7 +46,7 @@ function Background(props) {
         </li>
         <li>
             <span>Image 06</span>
-            <div>
+            <div className="pushback">
                 <h3>
                     REPEAT
                 </h3>
