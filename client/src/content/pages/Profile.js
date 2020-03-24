@@ -11,26 +11,29 @@ function Profile(props) {
      let [error, setError] = useState(null)
 
      useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
-            }
-        })
-        .then(response => {
-          if (response.data.message) {
-            setError(response.data.message)
-            console.log(response.data.err)
-          } else {
-            setFriendList(response.data)
-            setEventList(response.data)
-            console.log(response.data)
-          }
-        }).catch(err=>{
-          setError(err.message)
-          console.log(err)
-        });
+         console.log(props.user)
+        // fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
+        //     }
+        // })
+        // .then(response => {
+        //     console.log(response)
+        //   if (response.data) {
+        //       console.log('--------------------------farts---------------------')
+        //     setError(response.data.message)
+        //     console.log(response.data.err)
+        //   } else {
+        //     setFriendList(response.data)
+        //     setEventList(response.data)
+        //     console.log(response.data)
+        //   }
+        // }).catch(err=>{
+        //   setError(err.message)
+        //   console.log(err)
+        // });
     }, [])
      
 
@@ -52,7 +55,7 @@ function Profile(props) {
             console.log(`${response}`)
             return response.json()
             }).then((data) => {
-            console.log(data)
+                console.log(data)
             })
         .catch(err=>{
             console.log(err)
@@ -76,16 +79,17 @@ function Profile(props) {
     let myEventsList = props.user.events.length < 1 ?
     <h3>you have no events!</h3> :
     props.user.events.map((event, i) => {
-        console.log(event)
+        console.log(event._id)
 
         return (
         <div className="itemlist" key={`eventListitem-${i}`}>
-            <button className="itemsbtn" type="submit"><a href="">
+            <button className="itemsbtn" type="submit"><Link to={`/eat/event/${event._id}`} >
                 <h3>{event.title}</h3>
              <h5>Time: {event.time}</h5>
              <h5>Date: {event.date}</h5>
-             <h5>{event.attendees}</h5>
-             <h5>{event.restauants}</h5></a></button>
+             <h5>{event.attendees[0].firstname}, {event.attendees[1].firstname}</h5>
+             {event.restauants && event.restauants.length === 1 ? <h5>{event.restaurants[0]}</h5> : <h5>Choose your Restaurant</h5>}
+             </Link></button>
              
         </div>)
     })

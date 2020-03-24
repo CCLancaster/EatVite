@@ -1,13 +1,19 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios'); 
-
+var nodemailer = require('nodemailer');
 var db = require('../models');
 
 
 
 router.get('/profile', function(req, res) {
-  db.User.findById(req.user._id).populate('friends').populate('events')
+  db.User.findById(req.user._id).populate('friends').populate({
+    path: 'events',
+    populate: {
+      path: 'attendees',
+      model: 'User'
+    }
+  })
   .then(user => {
     user.friends.forEach(friend=>console.log(`${friend.firstname}`))
     user.events.forEach(event=>console.log(`${event}`))
@@ -117,12 +123,17 @@ router.post('/chooser', function(req, res) {
 })
 
 router.get('/event/:id', function(req, res) {
-  db.Event.findById(req.params.id)
-  .then(event => res.send(event))
+  console.log(req.params)
+  console.log('titties')
+  db.Event.findOne({"_id" : req.params.id})
+  .then(event => {
+    console.log(event)
+    res.send(event)
+  })
   .catch(err => res.send({ message: 'Error in getting one event', err}));
 })
 
-// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the methos portion of the fetch call-w00t!)
+// TODO:This method needs method-override to work (UPDATE: does not need method override, just needs "PUT" in the method portion of the fetch call-w00t!)
 router.put('/event/:id', function(req, res) {
   console.log(req.params.id)
   console.log('butts')
@@ -135,5 +146,30 @@ router.put('/event/:id', function(req, res) {
 
 })
 
+router.post('/sendEatVite', function(req, res) {
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'testpeaches@gmail.com',
+    pass: 'Qu4rant1nedD3vs'
+  }
+});
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+})
 
 module.exports = router;
