@@ -12,28 +12,6 @@ function Profile(props) {
 
      useEffect(() => {
          console.log(props.user)
-        // fetch(`${process.env.REACT_APP_SERVER_URL}/eat/profile`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${localStorage.getItem('mernToken')}`,
-        //     }
-        // })
-        // .then(response => {
-        //     console.log(response)
-        //   if (response.data) {
-        //       console.log('--------------------------farts---------------------')
-        //     setError(response.data.message)
-        //     console.log(response.data.err)
-        //   } else {
-        //     setFriendList(response.data)
-        //     setEventList(response.data)
-        //     console.log(response.data)
-        //   }
-        // }).catch(err=>{
-        //   setError(err.message)
-        //   console.log(err)
-        // });
     }, [])
      
 

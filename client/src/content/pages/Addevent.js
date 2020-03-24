@@ -166,7 +166,7 @@ function Addevent(props) {
                         {restaurantList}
                     </div>
                 </div>
-                <button type="submit">Send EatVite!</button>
+                <button type="submit" ><Link to={`/eat/profile`} >Send EatVite!</Link></button>
             </div>
         </div>
 
