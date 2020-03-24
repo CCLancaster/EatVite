@@ -116,11 +116,11 @@ function Addevent(props) {
         <h3>There are no restaurants to show! Try a different search criteria.</h3> : 
         restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
-            <div className="something">
-                <div className="leftbox">
+            <div className="apideetcontainer">
+                <div className="boxes">
                     <img src={restaurant.image_url} className="apiimg" />
                 </div>
-                <div className="rightbox">
+                <div className="boxes">
                     <h2><a href={restaurant.url}>{restaurant.name}</a></h2>
                     <h5>{restaurant.style}</h5>
                     <h5>Rating: {restaurant.rating}</h5>

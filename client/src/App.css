@@ -45,6 +45,10 @@ a:hover {
   margin: 2px 0px 15px 1px;
   padding: 0px;
 }
+
+.red {
+  color: red;
+}
 /*---------------------------Signup/Login Forms----------------------------*/
 
 .signForm {
@@ -54,25 +58,54 @@ a:hover {
   height: 500px;
   width: 400px;   
   align-self: flex-end;
-  margin-top: 2%;
+  margin-top: -10px;
   margin-right: 5%;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  padding-bottom: 40px;
+  padding-bottom: 30px;
+}
+.logimg {
+  position: relative;
+  margin-top: -50;
+  z-index: 0;
+}
+
+.steak {
+  width: 100%;
+  height: 80%;
+}
+
+.login {
+  display: flex;
+  width: 50%;
+  margin: -50% 25%;
+  border: 1px solid black;
+  border-radius: 4px;
+  z-index: 100;
+  position: absolute;
+}
+
+.welcomeback {
+  width: 50%;
+  height: 500px;
+  background-color: #f3f3f3;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 101;
 }
 
 .logform {
   background-color: white;
-  color:black;
-  height: 440px;
-  width: 400px;   
-  margin: 100px auto;
-  text-align: center;
-  border-radius: 4px;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding-top: 60px;
+  width: 50%;
+  height: 500px;   
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -92,12 +125,17 @@ input[type=text], select {
   height: 80px;
 }
 
+.logo2 {
+  width: 100%;
+}
+
 button {
   font-size: 16px;
   padding: 5px;
   margin: 15px 0px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
 
 /*----------------------------------Profile-------------------------*/
 
@@ -265,20 +303,18 @@ button {
   /* display: flex; */
 
 }
-.something {
+
+.apideetcontainer {
   width: 90%;
   padding: 20px;
   display: flex;
   align-items: center;
 }
-.leftbox {
-  width: 50%;
 
-}
-
-.rightbox {
+.boxes {
   width: 50%;
 }
+
 .apiimg {
   width: 100%;
   /* height: 300px; */
@@ -310,10 +346,6 @@ button {
     z-index: 0; 
 }
 
-div {
-  z-index: 0;
-}
-
 .cb-slideshow li span { 
   width: 100%;
   height: 85%;
@@ -343,7 +375,7 @@ div {
 
 .cb-slideshow li div h3 { 
   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-  font-size: 15em;
+  font-size: 12em;
   text-align: left;
   padding: 0;
   width: 50%;
@@ -429,3 +461,7 @@ div {
   .cb-slideshow li div h3 { font-size: 80px }
 }
 
+.pushback{
+  position: relative;
+  z-index: 22;
+}
