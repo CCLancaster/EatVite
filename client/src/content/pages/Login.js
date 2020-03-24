@@ -48,14 +48,19 @@ function Login(props) {
             <img src="https://media3.s-nbcnews.com/i/newscms/2018_15/1331889/grilled-chimichurri-soy_steak-today-041618-tease_0c5468b77e1728fa3c7d202d95a76821.jpg" className="steak"/>
             <div className="login">
                 <div className="logform">
-                    <h2>Login</h2>
-                    <form method="POST" onSubmit={handleSubmit}>
-                        <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-                        <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-                        <button type="submit">Submit</button>
-                    </form>
-                    <p>New user?
-                    <a href='/' className="red">Sign up here</a></p>
+                    <div>
+                        <h2>Login</h2>
+                        <form method="POST" onSubmit={handleSubmit}>
+                            <input type="text" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+                            <input type="text" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                            <button type="submit">Submit</button>
+                        </form>
+                        <p>New user?
+                        <a href='/' className="red">Sign up here</a></p>
+                    </div>
+                    <div class="tooltip">Forgot your password?
+                        <span class="tooltiptext">Yikes. That sucks.</span>
+                    </div>
                 </div>
                 <div className="welcomeback">
                     <img src="/eatvitelogo.png" className="logo2" />
