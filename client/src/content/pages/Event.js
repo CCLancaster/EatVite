@@ -61,7 +61,7 @@ function Event(props) {
                     <h5>Rating: {restaurant.rating}</h5>
                     <h5>Price: {restaurant.price}</h5>
                     {restaurant.location.display_address.map(addressLine => <p>{addressLine}</p>)}
-                <button type="submit">Let's Eat!</button>
+                <button type="submit" onClick={(e) => {handleRestaurantSubmit(e, restaurant);}}>Let's Eat!</button>
             </div>
             </div>
         </div>
@@ -79,14 +79,14 @@ function Event(props) {
                 <h3>Invitees: </h3>{event.friends.map(name => <p> {name} </p>)}
             </div>
     
-            <form method="POST" className="restaurantform" onSubmit={(e) => {handleRestaurantSubmit(e, restaurant);}}>
+            <div className="restaurantform" >
                 <div className="resoptions">
                     <h1 className="headtitle">Pick ONE restaurant from the list below!</h1>
                         <div>List of chosen restaurants:
                             {restaurantList}
                         </div>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
