@@ -79,6 +79,10 @@ function Profile(props) {
 
         return (<div key={`eventListitem-${i}`}>
              <h5>{event.title}</h5>
+             <h5>{event.date}</h5>
+             <h5>{event.time}</h5>
+             <h5>{event.friends}</h5>
+             <h5>{event.restauants}</h5>
         </div>)
     })
             
