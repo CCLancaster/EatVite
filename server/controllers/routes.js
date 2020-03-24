@@ -48,7 +48,7 @@ router.post('/addevent', function(req, res) {
   db.Event.create(req.body)
   .then(event => {
     //this is were we use the friend name we just entered into the event table to find the user id
-    db.User.updateMany({ id: { $in: req.body.attendees } }, {$addToSet:{events: event}}).then(updatedMeta=>res.send(event))
+    db.User.updateMany({ _id: { $in: req.body.attendees } }, {$addToSet:{events: event}}).then(updatedMeta=>res.send(event))
   }).catch(err=>res.send(err))  
 })
 
