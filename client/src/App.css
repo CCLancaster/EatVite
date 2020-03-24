@@ -49,6 +49,33 @@ a:hover {
 .red {
   color: red;
 }
+
+.logo {
+  height: 80px;
+}
+
+.logo2 {
+  width: 100%;
+}
+
+input[type=text], select {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  padding: 5px;
+  margin: 15px 0px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 /*---------------------------Signup/Login Forms----------------------------*/
 
 .signForm {
@@ -109,34 +136,32 @@ a:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-input[type=text], select {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 15px;
+.tooltiptext {
+  display: block;
+}
+
+.tooltip {
+  position: relative;
   display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: #f3f3f3;
-  font-size: 16px;
+  border-bottom: 1px dotted black;
 }
 
-.logo {
-  height: 80px;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
 }
 
-.logo2 {
-  width: 100%;
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
-
-button {
-  font-size: 16px;
-  padding: 5px;
-  margin: 15px 0px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-
 /*----------------------------------Profile-------------------------*/
 
 .profile {
@@ -152,13 +177,36 @@ button {
 }
 
 .profilecontent {
-  color: red;
-  /* border: 1px solid black; */
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  width: 80%;
+  width: 90%;
   height: 80%;
   align-self: center;
+  overflow: auto;
 }
+
+.itemlist {
+  background-color: white;
+  /* margin: 10px; */
+  /* padding: 5px; */
+  border: none;
+  }
+  
+  .itemsbtn {
+    width: 95%;
+    padding: 0;
+    box-shadow: none;
+  
+  }
+  
+  button:hover {
+  color: #404040 ;
+  font-weight: 700;
+  letter-spacing: 3px;
+  background: none;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
+  }
 /*------------------------------Friends List-------------------------*/
 
 .friendlist {
@@ -300,7 +348,6 @@ button {
   margin: 30px auto;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   overflow: auto;
-  /* display: flex; */
 
 }
 
@@ -317,9 +364,7 @@ button {
 
 .apiimg {
   width: 100%;
-  /* height: 300px; */
 }
-
 /*------------------------------Event.js ----------------------------*/
 
 .invitation {

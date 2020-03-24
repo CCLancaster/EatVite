@@ -7,7 +7,13 @@ var db = require('../models');
 
 
 router.get('/profile', function(req, res) {
-  db.User.findById(req.user._id).populate('friends').populate('events')
+  db.User.findById(req.user._id).populate('friends').populate({
+    path: 'events',
+    populate: {
+      path: 'attendees',
+      model: 'User'
+    }
+  })
   .then(user => {
     user.friends.forEach(friend=>console.log(`${friend.firstname}`))
     user.events.forEach(event=>console.log(`${event}`))
@@ -119,9 +125,11 @@ router.post('/chooser', function(req, res) {
 router.get('/event/:id', function(req, res) {
   console.log(req.params)
   console.log('titties')
-  db.Event.find({"_id" : req.params.id})
-  .then(event => res.send(event))
-  console.log(event)
+  db.Event.findOne({"_id" : req.params.id})
+  .then(event => {
+    console.log(event)
+    res.send(event)
+  })
   .catch(err => res.send({ message: 'Error in getting one event', err}));
 })
 

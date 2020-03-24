@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 function Event(props) {
-
-    let [event, setEvent] = useState([])
+    let {id} = useParams()
+    let [event, setEvent] = useState({})
     let [restaurants, setRestaurants] = useState([])
     let [error, setError] = useState(null)
 
     //fetch the Event information from our Event schema
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event._id}`, {
+        console.log(id)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,6 +46,7 @@ function Event(props) {
                 //     }
                 // }))
                 console.log(`this is the event: ${event}`)
+                console.log(event)
                 console.log(`these are the restaurants: ${event.restaurants}`)
             })
             }
@@ -52,7 +54,7 @@ function Event(props) {
         .catch(err => {
             console.log(err)
         })
-    });
+    }, []);
 
     const handleRestaurantSubmit = (e, finalRestaurant) => {
         e.preventDefault()
@@ -78,9 +80,9 @@ function Event(props) {
         
     }
 
-    let restaurantList = restaurants.length < 1 ? 
+    let restaurantList = !event.restaurants || event.restaurants.length < 1 ? 
         <h3>There are no restaurants to show!</h3> : 
-        restaurants.map((restaurant, i) => (
+        event.restaurants.map((restaurant, i) => (
         <div key={`restaruantListItem-${i}`}>
             <div className="apideetcontainer">
             <div className="boxes">

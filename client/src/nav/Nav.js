@@ -12,12 +12,12 @@ const Nav = props => {
 
   let links = (
     <span>
-      {/* <li>
-        <Link to="/auth/login">Login</Link>
+      <li>
+        {/* <Link to="/auth/login">Login</Link> */}
       </li>
       <li>
-        <Link to="/">Signup</Link>
-      </li> */}
+        {/* <Link to="/">Signup</Link> */}
+      </li>
     </span>
   )
   
