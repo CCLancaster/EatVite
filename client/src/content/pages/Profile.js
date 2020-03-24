@@ -80,6 +80,7 @@ function Profile(props) {
         </div>)
     })
 
+    
     let myEventsList = props.user.events.length < 1 ?
     <h3>you have no events!</h3> :
     props.user.events.map((event, i) => {
@@ -91,8 +92,10 @@ function Profile(props) {
                 <h3>{event.title}</h3>
              <h5>Time: {event.time}</h5>
              <h5>Date: {event.date}</h5>
-             <h5>{event.attendees[0].firstname} & {event.attendees[1].firstname}</h5>
-             {event.restauants && event.restauants.length === 1 ? <h5>{event.restaurants[0]}</h5> : <h5>Choose your Restaurant</h5>}
+
+             <h5>{event.attendees[0].firstname}, {event.attendees[1].firstname}</h5>
+             {event.restaurants && event.restaurants.length === 1 ? <h5>{event.restaurants[0].name}</h5> : <h5>Choose your Restaurant</h5>}
+             
              </Link></button>
              
         </div>)

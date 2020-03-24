@@ -61,7 +61,7 @@ function Event(props) {
         setRestaurants([finalRestaurant])
         console.log("**********BUTTS**************")
         console.log(event) 
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event._id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/one/${event._id}`, {
             method: 'PUT',
             body:JSON.stringify({ restaurant: finalRestaurant }),
             headers: {
