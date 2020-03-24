@@ -9,7 +9,7 @@ function Event(props) {
 
     //fetch the Event information from our Event schema
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event.id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event._id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,6 +57,8 @@ function Event(props) {
     const handleRestaurantSubmit = (e, finalRestaurant) => {
         e.preventDefault()
         setRestaurants([finalRestaurant])
+        console.log("**********BUTTS**************")
+        console.log(event) 
         fetch(`${process.env.REACT_APP_SERVER_URL}/eat/event/${event._id}`, {
             method: 'PUT',
             body:JSON.stringify({ restaurant: finalRestaurant }),

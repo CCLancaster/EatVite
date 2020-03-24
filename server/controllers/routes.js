@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios'); 
-
+var nodemailer = require('nodemailer');
 var db = require('../models');
 
 
@@ -138,5 +138,30 @@ router.put('/event/:id', function(req, res) {
 
 })
 
+router.post('/sendEatVite', function(req, res) {
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'testpeaches@gmail.com',
+    pass: 'Qu4rant1nedD3vs'
+  }
+});
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+})
 
 module.exports = router;
