@@ -145,7 +145,7 @@ function Addevent(props) {
                     <input type="text" name="date" placeholder="mm/dd" onChange={e => setDate(e.target.value)}/>
                     <input type="text" name="time" placeholder="Time" onChange={e => setTime(e.target.value)}/>
                     <select name="friend" onChange={e => setFriend(e.target.value)} >
-                        <option default value=''>No Friend</option>
+                        <option default value=''>Select A Friend</option>
                         {props.user.friends.map(friend=><option value={friend._id}>{friend.firstname}</option>)}
                     </select>
                     <button type="submit"> Next Step</button>

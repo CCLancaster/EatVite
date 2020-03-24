@@ -13,10 +13,10 @@ const Nav = props => {
   let links = (
     <span>
       <li>
-        <Link to="/auth/login">Login</Link>
+        {/* <Link to="/auth/login">Login</Link> */}
       </li>
       <li>
-        <Link to="/">Signup</Link>
+        {/* <Link to="/">Signup</Link> */}
       </li>
     </span>
   )
@@ -45,7 +45,7 @@ const Nav = props => {
         </div>
         <div className="links">
             <ul>
-            {/* {links} */}
+            {links}
             </ul>
         </div>
     </div>

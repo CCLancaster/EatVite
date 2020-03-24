@@ -66,8 +66,9 @@ function Profile(props) {
     props.user.friends.map((friend, i) => {
         console.log(friend)
 
-        return (<div key={`friendListitem-${i}`}>
-            <h5>{friend.firstname}</h5>
+        return (
+        <div className="itemlist" key={`friendListitem-${i}`}>
+            <h3>{friend.firstname}</h3>
         </div>)
     })
 
@@ -76,12 +77,14 @@ function Profile(props) {
     props.user.events.map((event, i) => {
         console.log(event)
 
-        return (<div key={`eventListitem-${i}`}>
-             <h5>{event.title}</h5>
-             <h5>{event.date}</h5>
-             <h5>{event.time}</h5>
-             <h5>{event.friends}</h5>
-             <h5>{event.restauants}</h5>
+        return (
+        <div className="itemlist" key={`eventListitem-${i}`}>
+            <button className="itemsbtn" type="submit"><a href="">
+                <h3>{event.title}</h3>
+             <h5>Time: {event.time}</h5>
+             <h5>Date: {event.date}</h5>
+             <h5>{event.attendees}</h5>
+             <h5>{event.restauants}</h5></a></button>
              
         </div>)
     })
@@ -94,7 +97,6 @@ function Profile(props) {
                     <h1 className="headtitle">Friends</h1>
                 </div>
                 <div className="profilecontent">
-                    <h4>BACKEND CONTENT</h4>
                     {friendsNamesList}
                 </div>
                 <div className="popupcontainer">
@@ -124,7 +126,6 @@ function Profile(props) {
                     <h1 className="headtitle">Events</h1>
                 </div>
                 <div className="profilecontent">
-                    <h4>BACKEND CONTENT</h4>
                     {myEventsList}
                 </div>
                 <div>
